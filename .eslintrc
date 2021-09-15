@@ -1,0 +1,76 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "./",
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "experimentalDecorators": true,
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "@typescript-eslint"],
+  "rules": {
+    "no-console": 0,
+    "no-unused-vars": "error",
+    "no-useless-constructor": 0,
+    "react/jsx-uses-react": "error",
+    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "semi": ["error"],
+    "no-extra-semi": "error",
+    "react/jsx-no-comment-textnodes": "error",
+    "react/jsx-uses-vars": [2],
+    "react/display-name": "error",
+    "react/jsx-key": "error",
+    "react/prop-types": "off",
+    "comma-dangle": "off",
+    "max-len": ["error", 100],
+    "indent": ["error", 2, {"SwitchCase": 1}],
+    "no-tabs": 0,
+    "quotes": ["error", "single"],
+    "camelcase": "off",
+    "newline-before-return": ["off"],
+    "no-case-declarations": ["off"],
+    "no-invalid-this": "off",
+    "require-jsdoc": ["off"],
+    "spaced-comment": ["error"],
+    "quote-props": ["error", "as-needed", {"unnecessary": false}],
+    "operator-linebreak": ["error"],
+    "linebreak-style": "off",
+    "arrow-parens": ["off"],
+    "guard-for-in": "error",
+    "no-useless-escape": "off",
+    "no-prototype-builtins": "off",
+    "no-empty-pattern": "warn",
+    "@typescript-eslint/camelcase": ["off"],
+    "@typescript-eslint/interface-name-prefix": ["off", "always"],
+    "@typescript-eslint/no-empty-interface": ["off"],
+    "@typescript-eslint/no-var-requires": ["off"],
+    "@typescript-eslint/no-inferrable-types": ["off"],
+    "@typescript-eslint/explicit-function-return-type": ["off"],
+    "@typescript-eslint/no-use-before-define": ["off"],
+    "@typescript-eslint/no-namespace": ["off"],
+    "prefer-rest-params": ["error"],
+    "no-var": ["error"],
+    "react/no-string-refs": ["error", {"noTemplateLiterals": true}],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "block-spacing": ["error", "never"],
+    "object-curly-spacing": ["error", "never"],
+    "space-before-function-paren": ["error", "never"]
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  }
+}
