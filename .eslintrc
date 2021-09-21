@@ -18,12 +18,12 @@
   "plugins": ["react", "react-hooks", "@typescript-eslint"],
   "rules": {
     "no-console": 0,
-    "no-unused-vars": "error",
     "no-useless-constructor": 0,
     "react/jsx-uses-react": "error",
     "@typescript-eslint/indent": ["error", 2],
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars-experimental": "error",
+    "@typescript-eslint/no-explicit-any": "off",
     "semi": ["error"],
     "no-extra-semi": "error",
     "react/jsx-no-comment-textnodes": "error",
@@ -64,8 +64,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "off",
     "block-spacing": ["error", "never"],
-    "object-curly-spacing": ["error", "never"],
-    "space-before-function-paren": ["error", "never"]
+    "object-curly-spacing": ["error", "never"]
   },
   "settings": {
     "react": {
