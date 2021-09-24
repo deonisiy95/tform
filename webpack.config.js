@@ -2,8 +2,16 @@ const path = require('path');
 const webpack = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const getCSP = require('./src/core/const/csp.ts');
 
 const isDevelopment = () => (process.env.NODE_ENV || 'development') === 'development';
+
+const meta = {
+  'Content-Security-Policy': {
+    'http-equiv': 'Content-Security-Policy',
+    content: getCSP()
+  }
+};
 
 module.exports = {
   entry: './src/index.tsx',
@@ -129,11 +137,11 @@ module.exports = {
         removeAttributeQuotes: true,
         removeComments: true
       },
+      meta: meta,
       isBrowser: false,
       isDevelopment: process.env.NODE_ENV !== 'production',
-      nodeModules: process.env.NODE_ENV !== 'production'
-        ? path.resolve(__dirname, '../node_modules')
-        : false
+      nodeModules:
+        process.env.NODE_ENV !== 'production' ? path.resolve(__dirname, '../node_modules') : false
     }),
     new ForkTsCheckerWebpackPlugin({
       eslint: {
