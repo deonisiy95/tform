@@ -1,5 +1,11 @@
 export namespace NSApp {
   interface IStore {
-    token: string;
+    auth: boolean;
+    token: IToken;
   }
+}
+
+export interface IToken {
+  accessToken: string;
+  refreshToken: string;
 }
