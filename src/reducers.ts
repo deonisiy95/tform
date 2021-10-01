@@ -1,5 +1,5 @@
-import {appReducer} from 'src/app/reducers';
+import {authReducer} from 'src/auth/reducers';
 
 export const reducers = {
-  app: appReducer
+  auth: authReducer
 };

@@ -12,6 +12,8 @@
   "dependencies": {
     "@reduxjs/toolkit": "1.6.1",
     "history": "4.10.1",
+    "idb-keyval": "6.0.2",
+    "moment": "2.29.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "7.2.5",
@@ -26,6 +28,7 @@
     "@types/react-redux": "7.1.18",
     "@typescript-eslint/eslint-plugin": "4.29.2",
     "@typescript-eslint/parser": "4.29.2",
+    "@types/moment": "2.13.0",
     "css-loader": "6.2.0",
     "eslint": "7.32.0",
     "eslint-plugin-import": "2.24.1",

@@ -1,11 +1,11 @@
 import React, {useCallback} from 'react';
 import useDispatcher from 'src/core/hooks/useDispatcher';
 import LoginComponent from 'src/auth/components/Login';
-import actions from 'src/app/actions';
+import authActions from 'src/auth/actions';
 import {navigate} from 'src/core/scripts/navigation';
 
 export default function Login() {
-  const signIn = useDispatcher(actions.signIn);
+  const signIn = useDispatcher(authActions.signIn);
   const toSignUp = () => {
     navigate('/signup');
   };
