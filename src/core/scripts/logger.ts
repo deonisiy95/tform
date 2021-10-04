@@ -35,6 +35,8 @@ const ORIGINALS: ILogger.ILoggerInterface = (window.console as any).originals ? 
   error: window.console.error
 };
 
+const selfWindow = window;
+
 function getComponentColor(componentName: string) {
   componentName = componentName.toLowerCase();
   let color = COLORS.default;
@@ -60,20 +62,22 @@ function getComponentColor(componentName: string) {
   return color;
 }
 
-const selfWindow = window;
-const fireConsole = (type: string, componentName: string, args: any[]) => {
+const fireConsole = (type: string, component: string, args: any[]) => {
   let color = COLORS.default;
-  if (componentName) {
-    componentName += ':';
-    if (type === 'warn') {
-      componentName += ' WARN';
-      color = COLORS.warn;
-    } else if (type === 'error') {
+  let componentName = component ? component + ':' : '';
+
+  switch (type) {
+    case 'error':
       componentName += ' ERROR';
       color = COLORS.error;
-    } else {
+      break;
+    case 'warn':
+      componentName += ' WARN';
+      color = COLORS.warn;
+      break;
+    default:
       color = getComponentColor(componentName);
-    }
+      break;
   }
 
   const time = `[${moment().format('HH:mm:ss SSS')}] ${componentName}`;
@@ -103,11 +107,11 @@ const setName = (componentName: string): ILogger.ILoggerInterface => {
   };
 };
 
-const globalConsole = setName('GLOBAL');
-window.console.log = globalConsole.log;
-window.console.warn = globalConsole.warn;
-window.console.info = globalConsole.info;
-window.console.error = globalConsole.error;
+const customConsole = setName('GLOBAL');
+window.console.log = customConsole.log;
+window.console.warn = customConsole.warn;
+window.console.info = customConsole.info;
+window.console.error = customConsole.error;
 (window.console as any).originals = ORIGINALS;
 
 export default (componentName: string): ILogger.ILoggerInterface => {

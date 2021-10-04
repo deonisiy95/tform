@@ -4,15 +4,21 @@ export const localStore = createStore('app-db', 'local-storage');
 
 class LocalStorage {
   public async setItem(key: string, value: any): Promise<void> {
-    return set(key, value, localStore).catch(this.handleError);
+    return set(key, value, localStore).catch(error => {
+      this.handleError(error);
+    });
   }
 
   public async getItem(key: string): Promise<any> {
-    return get(key, localStore).catch(this.handleError);
+    return get(key, localStore).catch(error => {
+      this.handleError(error);
+    });
   }
 
   public async removeItem(key: string): Promise<void> {
-    return del(key, localStore).catch(this.handleError);
+    return del(key, localStore).catch(error => {
+      this.handleError(error);
+    });
   }
 
   public async getItemAsObject<T = any>(key: string): Promise<T> {

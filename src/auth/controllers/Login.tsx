@@ -5,7 +5,7 @@ import authActions from 'src/auth/actions';
 import {navigate} from 'src/core/scripts/navigation';
 
 export default function Login() {
-  const signIn = useDispatcher(authActions.signIn);
+  const signIn = useDispatcher(authActions.login);
   const toSignUp = () => {
     navigate('/signup');
   };

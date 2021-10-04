@@ -4,7 +4,7 @@ import {IToken} from 'src/auth/@types';
 const prefix = 'AUTH';
 
 const actions = {
-  signIn: createAction(`${prefix}_SIGN_IN`, (email: string, password: string) => ({
+  login: createAction(`${prefix}_LOGIN`, (email: string, password: string) => ({
     payload: {
       email,
       password
@@ -13,6 +13,10 @@ const actions = {
 
   setToken: createAction(`${prefix}_SET_TOKEN`, (token: IToken) => ({
     payload: token
+  })),
+
+  setLoading: createAction(`${prefix}_SET_LOADING`, (loading: boolean) => ({
+    payload: loading
   }))
 };
 
