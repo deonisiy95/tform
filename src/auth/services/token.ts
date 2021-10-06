@@ -15,7 +15,8 @@ class TokenService {
 
   public getToken = async (): Promise<string> => {
     if (this.isExpired()) {
-      await this.updateToken();
+      const newToken = await this.updateToken();
+      this.setToken(newToken);
     }
 
     return this.token?.accessToken;
@@ -26,20 +27,24 @@ class TokenService {
     store.dispatch(actions.setToken(token));
   };
 
-  private updateToken = async (): Promise<void> => {
+  private updateToken = async (): Promise<IToken> => {
+    let token = null;
+
     try {
       const result = await authApiActions.refreshToken(this.token?.refreshToken);
-      this.setToken(result.tokens);
+      token = result.tokens;
     } catch (error) {
-      this.token = null;
       console.error('Error refresh token');
     }
+
+    return token;
   };
 
-  private isExpired = (token?: string) => {
+  private isExpired = () => {
+    const token = this.token?.accessToken;
     const expirationDate = this.getExpirationDate(token);
 
-    if (!expirationDate) {
+    if (!token || !expirationDate) {
       return false;
     }
 

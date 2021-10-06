@@ -1,25 +1,34 @@
 import React from 'react';
 import {Router, Switch, Route, Redirect} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {selectIsAuth} from 'src/auth/selectors';
+import {history} from 'src/core/scripts/navigation';
+import App from 'src/app/controllers/App';
 import Login from 'src/auth/controllers/Login';
 import SignUp from 'src/auth/controllers/SignUp';
 import DashBoard from 'src/dashboard/controllers';
-import {history} from 'src/core/scripts/navigation';
-import {useSelector} from 'react-redux';
-import {selectIsAuth} from 'src/auth/selectors';
 
 export default function routesHandler() {
   return (
     <Router history={history}>
       <Switch>
-        <PrivateRoute exact path='/'>
-          <DashBoard />
-        </PrivateRoute>
-        <Route path='/login'>
+        <Route path={'/login'}>
           <Login />
         </Route>
-        <Route path='/signup'>
+        <Route path={'/signup'}>
           <SignUp />
         </Route>
+        <Redirect exact from='/' to='/dashboard' />
+        <PrivateRoute path='/'>
+          <App>
+            <PrivateRoute path='/dashboard'>
+              <DashBoard />
+            </PrivateRoute>
+            <PrivateRoute path='/home'>
+              <div>HOMe</div>
+            </PrivateRoute>
+          </App>
+        </PrivateRoute>
       </Switch>
     </Router>
   );

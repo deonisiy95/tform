@@ -26,7 +26,9 @@ export function* checkLogin() {
   const token = yield call(localStorage.getItem, 'token');
 
   if (token) {
-    TokenService.setToken(token);
-    yield put(actions.setToken(token));
+    yield call(TokenService.setToken, token);
+    yield call(TokenService.getToken);
+    yield put(actions.setLoading(false));
+    yield call(navigate, '/');
   }
 }

@@ -14,8 +14,9 @@ const initialState: NSAuth.IStore = {
 export const authReducer = createReducer(initialState, builder => {
   builder
     .addCase(actions.setToken, (state, action) => {
-      state.isAuth = true;
-      state.tokens = action.payload;
+      const tokens = action.payload;
+      state.isAuth = !!tokens;
+      state.tokens = tokens;
     })
     .addCase(actions.setLoading, (state, action) => {
       state.loading = action.payload;
