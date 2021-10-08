@@ -9,7 +9,7 @@ export default function SignUp() {
   const setToken = useDispatcher(authActions.setToken);
 
   const signUp = (data: ISignUpData) => {
-    Api.send<IToken>('signup', 'POST', data).then(result => {
+    Api.send<IToken>('signup', 'POST', data, false).then(result => {
       console.warn(result);
       setToken({
         accessToken: result.accessToken,

@@ -1,6 +1,6 @@
 import {host} from 'src/core/const/env';
-import store from 'src/store';
 import logger from 'src/core/scripts/logger';
+import TokenService from 'src/auth/services/token';
 
 const console = logger('[API]');
 
@@ -14,7 +14,6 @@ export default class Api {
     useToken = true
   ): Promise<T> => {
     return new Promise(async (resolve, reject) => {
-      const tokens = store.getState().auth.tokens;
       const headers: HeadersInit = {};
       let body: BodyInit = null;
 
@@ -22,7 +21,9 @@ export default class Api {
         headers['Content-Type'] = 'application/json;charset=utf-8';
       }
 
-      useToken && (headers['Authorization'] = tokens?.accessToken);
+      if (useToken) {
+        headers['Authorization'] = await TokenService.getToken();
+      }
 
       if (data) {
         body = JSON.stringify(data);

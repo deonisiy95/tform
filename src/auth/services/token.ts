@@ -45,7 +45,7 @@ class TokenService {
     const expirationDate = this.getExpirationDate(token);
 
     if (!token || !expirationDate) {
-      return false;
+      return true;
     }
 
     return Date.now() > expirationDate;
@@ -56,7 +56,13 @@ class TokenService {
       return null;
     }
 
-    const parsedToken = this.parseToken(token);
+    let parsedToken;
+
+    try {
+      parsedToken = this.parseToken(token);
+    } catch (error) {
+      console.log('Error parse token', error?.message);
+    }
 
     return parsedToken?.exp * 1000 || null;
   };
