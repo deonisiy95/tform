@@ -1,5 +1,5 @@
 import {createAction} from '@reduxjs/toolkit';
-import {IToken} from 'src/auth/@types';
+import {ISignUpData, IToken} from 'src/auth/@types';
 
 const prefix = 'AUTH';
 
@@ -9,6 +9,10 @@ const actions = {
       email,
       password
     }
+  })),
+
+  signUp: createAction(`${prefix}_SIGN_UP`, (data: ISignUpData) => ({
+    payload: data
   })),
 
   setToken: createAction(`${prefix}_SET_TOKEN`, (token: IToken) => ({

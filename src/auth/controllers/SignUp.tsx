@@ -1,22 +1,14 @@
-import React from 'react';
-import SignUpComponent, {ISignUpData} from 'src/auth/components/SignUp';
-import Api from 'src/core/scripts/api';
+import React, {useCallback} from 'react';
+import SignUpComponent from 'src/auth/components/SignUp';
 import useDispatcher from 'src/core/hooks/useDispatcher';
 import authActions from 'src/auth/actions';
-import {IToken} from 'src/auth/@types';
+import {ISignUpData} from 'src/auth/@types';
 
 export default function SignUp() {
-  const setToken = useDispatcher(authActions.setToken);
+  const signUp = useDispatcher(authActions.signUp);
+  const onSignUp = useCallback((data: ISignUpData) => {
+    signUp(data);
+  }, [signUp]);
 
-  const signUp = (data: ISignUpData) => {
-    Api.send<IToken>('signup', 'POST', data, false).then(result => {
-      console.warn(result);
-      setToken({
-        accessToken: result.accessToken,
-        refreshToken: result.refreshToken
-      });
-    });
-  };
-
-  return <SignUpComponent onClick={signUp} />;
+  return <SignUpComponent onClick={onSignUp} />;
 }

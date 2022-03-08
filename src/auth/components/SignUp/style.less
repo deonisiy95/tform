@@ -1,5 +1,26 @@
+@import '~styles/colors.less';
+
 :local {
+  .overlay {
+    height: 100%;
+    background-color: @blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .container {
-    background-color: green;
+    width: 400px;
+    height: 500px;
+    padding: 24px;
+    border-radius: 10px;
+    .box-shadow(@light-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    input {
+      margin-bottom: 16px;
+    }
   }
 }
