@@ -22,6 +22,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
       src: path.resolve(__dirname, 'src'),
+      styles: path.resolve(__dirname, 'src/styles'),
       process: 'process/browser'
     }
   },
@@ -39,7 +40,7 @@ module.exports = {
       },
       {
         test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
-        use: ['file-loader']
+        type: 'asset'
       },
       {
         test: /\.less$/,

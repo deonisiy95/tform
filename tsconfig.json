@@ -15,7 +15,8 @@
     "skipLibCheck": true,
     "noImplicitAny": false,
     "paths": {
-      "src/*": ["src/*"]
+      "src/*": ["src/*"],
+      "styles/*": ["src/styles/*"]
     },
     "typeRoots": ["node_modules/@types", "./**/@types"]
   },

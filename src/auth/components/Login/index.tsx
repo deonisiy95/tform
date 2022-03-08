@@ -16,11 +16,20 @@ export default function LoginComponent({onClick, toSignUp}: IProps) {
   };
 
   return (
-    <div className={style.container}>
-      <FormInput innerRef={inputEmail} size='sm' />
-      <FormInput innerRef={inputPassword} size='sm' />
-      <Button onClick={signIn}>Enter</Button>
-      <Button onClick={toSignUp}>SignUp</Button>
+    <div className={style.overlay}>
+      <div className={style.container}>
+        <h2>Вход</h2>
+        <div className={style.form}>
+          <div>Email</div>
+          <FormInput innerRef={inputEmail} size='sm' defaultValue={'batalov@mail.ru'}/>
+          <div>Пароль</div>
+          <FormInput innerRef={inputPassword} size='sm' defaultValue={'batalov'}/>
+        </div>
+        <div>
+          <Button onClick={signIn}>Enter</Button>
+          <Button onClick={toSignUp}>SignUp</Button>
+        </div>
+      </div>
     </div>
   );
 }
