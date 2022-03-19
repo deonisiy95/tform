@@ -42,3 +42,9 @@ export function* checkLogin() {
   yield put(actions.setLoading(false));
   yield call(navigate, '/');
 }
+
+export function* logout() {
+  yield call(Api.send, 'logout', 'POST');
+  yield call(TokenService.setToken, null);
+  yield call(navigate, '/');
+}

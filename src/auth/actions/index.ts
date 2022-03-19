@@ -11,6 +11,8 @@ const actions = {
     }
   })),
 
+  logout: createAction(`${prefix}_LOGOUT`),
+
   signUp: createAction(`${prefix}_SIGN_UP`, (data: ISignUpData) => ({
     payload: data
   })),
