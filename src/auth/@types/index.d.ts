@@ -3,6 +3,8 @@ export namespace NSAuth {
     isAuth: boolean;
     loading: boolean;
     tokens: IToken;
+    processing: boolean;
+    error: string;
   }
 }
 

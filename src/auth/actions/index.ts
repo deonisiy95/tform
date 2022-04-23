@@ -23,6 +23,14 @@ const actions = {
 
   setLoading: createAction(`${prefix}_SET_LOADING`, (loading: boolean) => ({
     payload: loading
+  })),
+
+  setError: createAction(`${prefix}_SET_ERROR`, (error: string) => ({
+    payload: error
+  })),
+
+  setProcessing: createAction(`${prefix}_SET_PROCESSING`, (processing: boolean) => ({
+    payload: processing
   }))
 };
 

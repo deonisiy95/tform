@@ -8,7 +8,9 @@ const initialState: NSAuth.IStore = {
     accessToken: null,
     refreshToken: null
   },
-  loading: true
+  loading: true,
+  processing: false,
+  error: null
 };
 
 export const authReducer = createReducer(initialState, builder => {
@@ -20,5 +22,11 @@ export const authReducer = createReducer(initialState, builder => {
     })
     .addCase(actions.setLoading, (state, action) => {
       state.loading = action.payload;
+    })
+    .addCase(actions.setError, (state, action) => {
+      state.error = action.payload;
+    })
+    .addCase(actions.setProcessing, (state, action) => {
+      state.processing = action.payload;
     });
 });

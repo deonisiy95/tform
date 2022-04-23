@@ -11,6 +11,8 @@ export function* login(action: ReturnType<typeof actions.login>) {
   const {email, password} = action.payload;
 
   try {
+    yield put(actions.setProcessing(true));
+
     const result = yield call(
       Api.send,
       'signin',
@@ -27,6 +29,8 @@ export function* login(action: ReturnType<typeof actions.login>) {
     yield call(navigate, '/');
   } catch (error) {
     console.error('Login error', error);
+  } finally {
+    yield put(actions.setProcessing(false));
   }
 }
 
