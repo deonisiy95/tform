@@ -31,6 +31,14 @@ const actions = {
 
   setProcessing: createAction(`${prefix}_SET_PROCESSING`, (processing: boolean) => ({
     payload: processing
+  })),
+
+  setSingUpError: createAction(`${prefix}_SET_SIGN_UP_ERROR`, (error: string) => ({
+    payload: error
+  })),
+
+  setSingUpProcessing: createAction(`${prefix}_SET_SIGN_UP_PROCESSING`, (processing: boolean) => ({
+    payload: processing
   }))
 };
 

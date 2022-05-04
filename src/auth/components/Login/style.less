@@ -11,17 +11,21 @@
 
   .container {
     width: 360px;
-    height: 550px;
     padding: 24px;
     border-radius: 16px;
-    background-image: url('./images/login.svg');
-    background-size: 300px;
-    background-position: center 24px;
-    background-repeat: no-repeat;
     .box-shadow(@light-blue);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    transition: max-height 200ms;
+
+    .image {
+      background-image: url('./images/login.svg');
+      background-size: 300px;
+      background-position: center 24px;
+      background-repeat: no-repeat;
+      height: 250px;
+    }
 
     input {
       margin-bottom: 16px;
@@ -34,6 +38,20 @@
     .signupText {
       font-size: 14px;
       margin-right: 4px;
+    }
+
+    .errorContainer {
+      font-size: 14px;
+      color: @red-60;
+      margin-bottom: 16px;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 200ms, opacity 200ms;
+    }
+
+    .error {
+      max-height: 40px;
+      opacity: 1;
     }
   }
 }

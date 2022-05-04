@@ -3,6 +3,7 @@ import style from './style.less';
 import {FormInput} from 'shards-react';
 import Link from 'src/core/components/Link';
 import Button from 'src/core/components/Button';
+import cn from 'classnames';
 
 interface IProps {
   error?: string;
@@ -11,7 +12,7 @@ interface IProps {
   toSignUp: () => void;
 }
 
-export default function LoginComponent({onClick, toSignUp, processing}: IProps) {
+export default function LoginComponent({onClick, toSignUp, processing, error}: IProps) {
   const inputEmail = useRef<HTMLInputElement>();
   const inputPassword = useRef<HTMLInputElement>();
 
@@ -22,6 +23,7 @@ export default function LoginComponent({onClick, toSignUp, processing}: IProps) 
   return (
     <div className={style.overlay}>
       <div className={style.container}>
+        <div className={style.image} />
         <h3>Вход</h3>
         <div className={style.form}>
           <FormInput
@@ -37,8 +39,9 @@ export default function LoginComponent({onClick, toSignUp, processing}: IProps) 
             defaultValue={'batalov'}
           />
         </div>
+        {<span className={cn(style.errorContainer, {[style.error]: error})}>{error}</span>}
         <Button className={style.button} onClick={signIn} isLoad={processing}>
-          Enter
+          Войти
         </Button>
         <div>
           <span className={style.signupText}>Еще не зарегистрированы?</span>
