@@ -22,6 +22,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
       src: path.resolve(__dirname, 'src'),
+      UI: path.resolve(__dirname, 'src/core/components'),
       styles: path.resolve(__dirname, 'src/styles'),
       process: 'process/browser'
     }

@@ -7,13 +7,14 @@ import App from 'src/app/controllers/App';
 import Login from 'src/auth/controllers/Login';
 import SignUp from 'src/auth/controllers/SignUp';
 import DashBoard from 'src/dashboard/controllers';
+import SplashScreen from 'src/app/components/SplashScreen';
 
 function Basis() {
   const isAuth = useSelector(selectIsAuth);
   const isLoading = useSelector(selectAuthLoading);
 
   if (isLoading) {
-    return <div>Loading</div>;
+    return <SplashScreen />;
   }
 
   if (!isAuth) {

@@ -16,7 +16,8 @@
     "noImplicitAny": false,
     "paths": {
       "src/*": ["src/*"],
-      "styles/*": ["src/styles/*"]
+      "styles/*": ["src/styles/*"],
+      "UI/*": ["src/core/components/*"]
     },
     "typeRoots": ["node_modules/@types", "./**/@types"]
   },

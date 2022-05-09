@@ -5,7 +5,7 @@ import {navigate} from 'src/core/scripts/navigation';
 import {localStorage} from 'src/core/scripts/localStorage';
 import TokenService from 'src/auth/services/token';
 
-const TIME_SPLASH_SCREEN = 1000;
+const TIME_SPLASH_SCREEN = 2000;
 const LOGIN_ERRORS = {
   invalid_credentials: 'Неправильный email или пароль'
 };
