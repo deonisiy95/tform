@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {PropsWithChildren} from 'react';
+import App from 'src/app/components/App';
+import Menu from 'src/menu/controllers';
 
-export default function App({children}: any) {
+export default function AppController({children}: PropsWithChildren<{}>) {
   return (
-    <div>
-      <div>----APP----</div>
-      <div>-----------</div>
-      {children}
-      <div>-----------</div>
-    </div>
+    <App>
+      <Menu />
+      <div>{children}</div>
+    </App>
   );
 }

@@ -1,0 +1,27 @@
+@import '~styles/colors.less';
+@import '~styles/mixins.less';
+
+:local {
+  .icon {
+    background-color: @grayscale-50;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+  }
+
+  .dashboard {
+    .mask-image('./images/dashboard.svg');
+  }
+
+  .dashboard-bold {
+    .mask-image('./images/dashboard-bold.svg');
+  }
+
+  .conversation {
+    .mask-image('./images/conversation.svg');
+  }
+
+  .out {
+    .mask-image('./images/out.svg');
+  }
+}

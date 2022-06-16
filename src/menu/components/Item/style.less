@@ -1,0 +1,31 @@
+@import '~styles/colors.less';
+
+:local {
+  .item {
+    height: 42px;
+    line-height: 2;
+    padding: 0 12px;
+    border-radius: 14px;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    &:hover {
+      background-color: #FB9FA3;
+
+      & > .icon {
+        background-color: #883b3b;
+      }
+
+      & > span {
+        color: #883b3b;
+      }
+    }
+  }
+
+  .icon {
+    margin-right: 10px;
+  }
+}
