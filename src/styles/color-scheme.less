@@ -1,0 +1,16 @@
+@import '~styles/colors';
+
+body {
+  .btn-primary {
+    color: @button-text;
+    background-color: @button;
+    border-color: @button;
+
+    &:hover {
+      color: @button-text;
+      background-color: darken(@button, 5%);
+      border-color: darken(@button, 5%);
+      box-shadow: none;
+    }
+  }
+}

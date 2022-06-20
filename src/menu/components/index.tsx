@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 import style from './style.less';
 import {TSection} from 'src/menu/@types';
 import MenuItem from './Item';
+import Logo from 'UI/Logo';
 
 interface IProps {
   onItemClick: (section: TSection) => void;
@@ -12,6 +13,7 @@ export default function Menu({onItemClick}: IProps) {
 
   return (
     <div className={style.container}>
+      <Logo />
       <div className={style.main}>
         <MenuItem title='Dashboard' icon='conversation' onClick={onClick('conversation')}/>
         <MenuItem title='Widget' icon='dashboard-bold' onClick={onClick('widgets')}/>
