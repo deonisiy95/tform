@@ -2,15 +2,25 @@
 
 body {
   .btn-primary {
-    color: @button-text;
-    background-color: @button;
-    border-color: @button;
-
-    &:hover {
-      color: @button-text;
-      background-color: darken(@button, 5%);
-      border-color: darken(@button, 5%);
+    &, &:disabled {
+      color: @main-element-text !important;
+      background-color: @main-element !important;
+      border-color: @main-element !important;
       box-shadow: none;
+    }
+
+    &:hover, &:focus, &:active {
+      color: @main-element-text !important;
+      background-color: darken(@main-element, 5%) !important;
+      border-color: darken(@main-element, 5%) !important;
+      box-shadow: none;
+    }
+  }
+
+  .form-control {
+    &:focus, &:hover, &:focus:hover {
+      box-shadow: none;
+      border-color: #c5948c;
     }
   }
 }
