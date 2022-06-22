@@ -4,9 +4,8 @@ import Menu from 'src/menu/controllers';
 
 export default function AppController({children}: PropsWithChildren<{}>) {
   return (
-    <App>
-      <Menu />
-      <div>{children}</div>
+    <App menu={<Menu />}>
+      {children}
     </App>
   );
 }
