@@ -1,0 +1,28 @@
+@import '~styles/colors';
+
+:local {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .image {
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .text {
+    margin: 24px 0;
+    color: @grayscale-40;
+  }
+
+  .widgets {
+    background-image: url('./images/add_widget.svg');
+    width: 250px;
+    height: 250px;
+  }
+
+}

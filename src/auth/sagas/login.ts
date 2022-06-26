@@ -1,5 +1,6 @@
 import {call, put, delay} from 'redux-saga/effects';
 import actions from 'src/auth/actions';
+import appActions from 'src/app/actions';
 import Api from 'src/core/scripts/api';
 import {navigate} from 'src/core/scripts/navigation';
 import {localStorage} from 'src/core/scripts/localStorage';
@@ -31,6 +32,8 @@ export function* login(action: ReturnType<typeof actions.login>) {
     yield call(TokenService.setToken, result.tokens);
 
     yield call(navigate, '/');
+
+    yield put(appActions.startApp());
   } catch (error) {
     yield delay(500);
 
@@ -61,6 +64,7 @@ export function* checkLogin() {
   yield delay(TIME_SPLASH_SCREEN);
   yield put(actions.setLoading(false));
   yield call(navigate, '/');
+  yield put(appActions.startApp());
 }
 
 export function* logout() {

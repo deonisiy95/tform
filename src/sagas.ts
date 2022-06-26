@@ -2,6 +2,7 @@ import {SagaMiddleware} from 'redux-saga';
 import {Saga} from '@redux-saga/types';
 import appSaga from 'src/app/sagas';
 import authSage from 'src/auth/sagas';
+import widgetSage from 'src/widgets/sagas';
 
 export function runSagas(mw: SagaMiddleware<object>) {
   const run = (saga: Saga, sagaName: string) => {
@@ -14,4 +15,5 @@ export function runSagas(mw: SagaMiddleware<object>) {
 
   run(appSaga, 'appSaga');
   run(authSage, 'authSage');
+  run(widgetSage, 'widgetSage');
 }

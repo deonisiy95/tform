@@ -8,6 +8,7 @@ import Login from 'src/auth/controllers/Login';
 import SignUp from 'src/auth/controllers/SignUp';
 import DashBoard from 'src/dashboard/controllers';
 import SplashScreen from 'src/app/components/SplashScreen';
+import Widgets from 'src/widgets/controllers';
 
 function Basis() {
   const isAuth = useSelector(selectIsAuth);
@@ -26,8 +27,8 @@ function Basis() {
       <PrivateRoute path='/dashboard'>
         <DashBoard />
       </PrivateRoute>
-      <PrivateRoute path='/home'>
-        <div>HOMe</div>
+      <PrivateRoute path='/widgets'>
+        <Widgets />
       </PrivateRoute>
     </App>
   );

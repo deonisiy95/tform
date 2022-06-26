@@ -5,9 +5,12 @@ import cn from 'classnames';
 
 interface Props {
   onClick: Function;
+  size?: 'sm' | 'md' | 'lg';
+  color?: 'primary' | 'light';
   className?: string;
   isLoad?: boolean;
   disabled?: boolean;
+  rounded?: boolean;
 }
 
 export default function Button(props: PropsWithChildren<Props>) {
@@ -18,6 +21,9 @@ export default function Button(props: PropsWithChildren<Props>) {
         className={style.button}
         disabled={props.disabled || props.isLoad}
         onClick={props.onClick}
+        theme={props.color}
+        size={props.size}
+        pill={Boolean(props.rounded)}
       >
         <div
           className={cn(style.text, {
