@@ -5,20 +5,31 @@ import MenuItem from './Item';
 import Logo from 'UI/Logo';
 
 interface IProps {
+  activeTab: TSection;
   onItemClick: (section: TSection) => void;
 }
 
-export default function Menu({onItemClick}: IProps) {
+export default function Menu({onItemClick, activeTab}: IProps) {
   const onClick = useCallback(section => () => onItemClick(section), []);
 
   return (
     <div className={style.container}>
       <Logo />
       <div className={style.main}>
-        <MenuItem title='Dashboard' icon='conversation' onClick={onClick('conversation')}/>
-        <MenuItem title='Widget' icon='dashboard-bold' onClick={onClick('widgets')}/>
+        <MenuItem
+          isActive={activeTab === 'dashboard'}
+          title='Dashboard'
+          icon='conversation'
+          onClick={onClick('conversation')}
+        />
+        <MenuItem
+          isActive={activeTab === 'widgets'}
+          title='Widget'
+          icon='dashboard-bold'
+          onClick={onClick('widgets')}
+        />
       </div>
-      <MenuItem title='Logout' icon='out' onClick={onClick('logout')}/>
+      <MenuItem title='Logout' icon='out' onClick={onClick('logout')} />
     </div>
   );
 }

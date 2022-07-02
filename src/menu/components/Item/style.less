@@ -7,6 +7,7 @@
     padding: 0 12px;
     border-radius: 14px;
     cursor: pointer;
+    position: relative;
 
     &:not(:last-child) {
       margin-bottom: 8px;
@@ -14,7 +15,9 @@
 
     &:hover {
       background-color: @main-element;
+    }
 
+    &:hover, &.active {
       & > .icon {
         background-color: @main-element-text;
       }
@@ -22,6 +25,16 @@
       & > span {
         color: @main-element-text;
       }
+    }
+
+    &.active:before {
+      border-left: 3px solid @main-element;
+      content: '';
+      width: 4px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: -16px;
     }
   }
 

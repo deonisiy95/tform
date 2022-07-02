@@ -6,7 +6,7 @@ import cn from 'classnames';
 interface Props {
   onClick: Function;
   size?: 'sm' | 'md' | 'lg';
-  color?: 'primary' | 'light';
+  color?: 'primary' | 'light' | 'azure';
   className?: string;
   isLoad?: boolean;
   disabled?: boolean;
@@ -18,7 +18,7 @@ export default function Button(props: PropsWithChildren<Props>) {
     <div className={cn(style.container, props.className)}>
       {props.isLoad && <div className={style.loader} />}
       <FormButton
-        className={style.button}
+        className={cn(style.button, `btn-${props.color}`)}
         disabled={props.disabled || props.isLoad}
         onClick={props.onClick}
         theme={props.color}

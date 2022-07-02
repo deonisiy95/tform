@@ -1,3 +1,5 @@
+@import '~styles/colors.less';
+
 :local {
   .container {
     position: relative;
@@ -17,5 +19,25 @@
 
   .button {
     width: 100%;
+  }
+}
+
+:global {
+  .btn-azure {
+    @azure: #6688A9;
+
+    &, &:disabled {
+      color: @grayscale-0 !important;
+      background-color: @azure !important;
+      border-color: @azure !important;
+      box-shadow: none;
+    }
+
+    &:hover, &:focus, &:active {
+      color: @grayscale-0 !important;
+      background-color: darken(@azure, 5%) !important;
+      border-color: darken(@azure, 5%) !important;
+      box-shadow: none;
+    }
   }
 }

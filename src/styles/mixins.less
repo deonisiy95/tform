@@ -2,3 +2,19 @@
   -webkit-mask: ~"url('@{url}') no-repeat center center";
   mask: ~"url('@{url}') no-repeat center center";
 }
+
+.line-clamp(@count) {
+  -webkit-line-clamp: @count;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  display: -webkit-box;
+  word-break: break-word;
+}
+
+.text-overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

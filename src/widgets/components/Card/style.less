@@ -1,0 +1,57 @@
+@import '~styles/colors.less';
+@import '~styles/mixins.less';
+
+:local {
+  .container {
+    width: 260px;
+    height: 216px;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: #F7F7FE;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info {
+    flex-grow: 1;
+  }
+
+  .icon {
+    position: absolute;
+    top: 14px;
+    width: 24px;
+    height: 24px;
+    -webkit-mask-size: 24px;
+    mask-size: 24px;
+  }
+
+  .title {
+    font-weight: 400;
+    padding-left: 34px;
+    margin-bottom: 12px;
+    .text-overflow-ellipsis();
+  }
+
+  .row {
+    display: flex;
+    padding: 0 4px;
+    margin-bottom: 12px;
+
+    .rowIcon {
+      flex-shrink: 0;
+      margin-right: 8px;
+    }
+
+    .rowText {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  .agents {
+    .rowText {
+      .line-clamp(3);
+    }
+  }
+}
