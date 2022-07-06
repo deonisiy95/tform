@@ -1,10 +1,10 @@
 import React, {useRef, useState} from 'react';
 import style from 'src/auth/components/Login/style.less';
 import componentStyle from './style.less';
-import {FormInput} from 'shards-react';
 import {ISignUpData} from 'src/auth/@types';
 import Link from 'src/core/components/Link';
 import Button from 'src/core/components/Button';
+import Input from 'src/core/components/Input';
 import cn from 'classnames';
 
 interface IProps {
@@ -61,22 +61,19 @@ export default function SignUpComponent({onClick, toLogin, error, processing}: I
         <div className={componentStyle.image} />
         <h3>Регистрация</h3>
         <div className={style.form}>
-          <FormInput
+          <Input
             placeholder={'Имя'}
-            innerRef={inputName}
-            size='sm'
+            ref={inputName}
             invalid={invalidName}
           />
-          <FormInput
+          <Input
             placeholder={'Email'}
-            innerRef={inputEmail}
-            size='sm'
+            ref={inputEmail}
             invalid={invalidEmail}
           />
-          <FormInput
+          <Input
             placeholder={'Пароль'}
-            innerRef={inputPassword}
-            size='sm'
+            ref={inputPassword}
             invalid={invalidPass}
           />
         </div>

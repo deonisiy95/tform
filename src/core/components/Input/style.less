@@ -1,0 +1,31 @@
+@import '~styles/colors';
+
+:local {
+  .input {
+    width: 100%;
+    outline: unset;
+    box-sizing: border-box;
+    height: auto;
+    font-size: 16px;
+    padding: 0.35rem 0.75rem;
+    line-height: 1.5;
+    color: @grayscale-60;
+    background-color: @grayscale-0;
+    border: 1px solid @grayscale-30;
+    font-weight: 300;
+    will-change: border-color, box-shadow;
+    border-radius: 0.375rem;
+    box-shadow: none;
+    transition: box-shadow 250ms cubic-bezier(0.27, 0.01, 0.38, 1.06),
+      border 250ms cubic-bezier(0.27, 0.01, 0.38, 1.06);
+
+    &:hover, &:focus {
+      border-color: #c5948c;
+    }
+  }
+
+  .invalid {
+    border-color: @red-50;
+    color: @red-50;
+  }
+}

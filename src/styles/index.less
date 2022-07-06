@@ -1,5 +1,4 @@
 @import 'normalize';
-@import 'color-scheme';
 @import '~styles/colors.less';
 
 html > body {
@@ -7,4 +6,24 @@ html > body {
   background-image: @main-background-gradient;
   color: @grayscale-65;
   user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
+  font-weight: 400;
+  color: @grayscale-80;
 }

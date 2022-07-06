@@ -7,9 +7,10 @@ import Button from 'UI/Button';
 
 interface IProps {
   widget: IWidget;
+  onClick: () => void;
 }
 
-export default function Card({widget}: IProps) {
+export default function Card({widget, onClick}: IProps) {
   return (
     <div className={style.container}>
       <div className={style.info}>
@@ -24,7 +25,7 @@ export default function Card({widget}: IProps) {
           <div className={style.rowText}>Нет подключенных агентов</div>
         </div>
       </div>
-      <Button onClick={() => {}} size='sm' color='azure' rounded={true}>
+      <Button onClick={onClick} size='sm' color='azure' rounded={true}>
         Настройки
       </Button>
     </div>

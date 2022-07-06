@@ -1,8 +1,8 @@
 import React, {useRef} from 'react';
 import style from './style.less';
-import {FormInput} from 'shards-react';
-import Link from 'src/core/components/Link';
-import Button from 'src/core/components/Button';
+import Link from 'UI/Link';
+import Button from 'UI/Button';
+import Input from 'UI/Input';
 import cn from 'classnames';
 
 interface IProps {
@@ -26,16 +26,14 @@ export default function LoginComponent({onClick, toSignUp, processing, error}: I
         <div className={style.image} />
         <h3>Вход</h3>
         <div className={style.form}>
-          <FormInput
+          <Input
             placeholder={'Email'}
-            innerRef={inputEmail}
-            size='sm'
+            ref={inputEmail}
             defaultValue={'batalov@mail.ru'}
           />
-          <FormInput
+          <Input
             placeholder={'Пароль'}
-            innerRef={inputPassword}
-            size='sm'
+            ref={inputPassword}
             defaultValue={'batalov'}
           />
         </div>

@@ -1,5 +1,4 @@
 import React, {PropsWithChildren} from 'react';
-import {Button as FormButton} from 'shards-react';
 import style from './style.less';
 import cn from 'classnames';
 
@@ -17,13 +16,17 @@ export default function Button(props: PropsWithChildren<Props>) {
   return (
     <div className={cn(style.container, props.className)}>
       {props.isLoad && <div className={style.loader} />}
-      <FormButton
-        className={cn(style.button, `btn-${props.color}`)}
+      <button
+        className={cn(
+          style.button,
+          style[`button-${props.color ?? 'primary'}`],
+          style[`button-${props.size}`],
+          {
+            [style.rounded]: props.rounded
+          }
+        )}
         disabled={props.disabled || props.isLoad}
-        onClick={props.onClick}
-        theme={props.color}
-        size={props.size}
-        pill={Boolean(props.rounded)}
+        onClick={() => props.onClick()}
       >
         <div
           className={cn(style.text, {
@@ -32,7 +35,7 @@ export default function Button(props: PropsWithChildren<Props>) {
         >
           {props.children}
         </div>
-      </FormButton>
+      </button>
     </div>
   );
 }
