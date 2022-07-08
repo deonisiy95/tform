@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import Widgets from 'src/widgets/components/Widgets';
 import {useSelector} from 'react-redux';
 import {selectWidgets, selectWidgetsLoading} from 'src/widgets/selectors';
-import Settings from 'src/widgets/components/Settings';
+import {Modal} from 'UI/Modal';
 
 export default function WidgetsController() {
   const widgets = useSelector(selectWidgets);
@@ -11,12 +11,13 @@ export default function WidgetsController() {
   const openSettings = useCallback((id: string) => {
     console.log(id);
     setOpenSettings(true);
+
+    Modal(<div>Hello</div>);
   }, [settingsIsOpen]);
 
   return (
     <>
       <Widgets widgets={widgets} loading={loading} onSettings={openSettings}/>
-      <Settings open={true} />
     </>
   );
 }
