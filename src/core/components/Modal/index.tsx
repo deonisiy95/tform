@@ -1,7 +1,8 @@
-import React, {FC, useCallback} from 'react';
+import React, {FC, useCallback, useEffect, useRef} from 'react';
 import ReactDOM from 'react-dom';
 import cn from 'classnames';
 import style from './style.less';
+import useIcon from 'src/core/hooks/useIcon';
 
 export interface IModalProps {
   close: VoidFunction;
@@ -20,6 +21,9 @@ const ModalContent: FC<IModalProps> = ({
   onClose,
   close
 }) => {
+  const backgroundRef = useRef<HTMLDivElement>();
+  const closeIcon = useIcon('close');
+
   const overlayClass = cn(style.overlay, {
     [overlayClassName]: !!overlayClassName
   });
@@ -38,12 +42,18 @@ const ModalContent: FC<IModalProps> = ({
     onCloseCallback();
   }, [onCloseCallback]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      backgroundRef.current?.classList.add(style.show);
+    });
+  }, []);
+
   return (
     <div className={overlayClass}>
-      <div className={style.background} onClick={onOverlayClick} />
+      <div className={style.background} onClick={onOverlayClick} ref={backgroundRef} />
       <div className={containerClassName}>
         <div className={style.content}>{children}</div>
-        <div className={style.close} onClick={onCloseCallback} />
+        <div className={cn(style.close, closeIcon.style)} onClick={onCloseCallback} />
       </div>
     </div>
   );
