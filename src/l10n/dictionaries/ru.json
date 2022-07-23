@@ -1,4 +1,13 @@
 {
   "settings": "Настройки",
+  "name": "Название",
+  "widgets.connected": "Подключенные виджеты",
+  "widgets.add": "Добавить новый виджет",
+  "widgets.add.field.name": "Придумайте название виджета",
+  "widgets.add.field.token.title": "Придумайте название виджета",
+  "widgets.add.field.token.text": "Придумайте название виджета",
+  "widgets.add.title": "Добавление виджета",
+  "widgets.empty": "Вы еще не добавили виджет",
+  "widgets.promo": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cumque fuga illum\nmagni optio quod repellat sit, totam. Aperiam autem esse eveniet nostrum quas quos\nullam? Non possimus quis vero.",
   "widget.agents.notExist": "Нет назначенных агентов"
 }

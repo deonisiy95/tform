@@ -1,0 +1,100 @@
+@import '~styles/colors.less';
+
+.pseudo-element-display() {
+  content: '';
+  display: block;
+}
+.absolute-height-center(@height) {
+  height: @height;
+  margin-top: calc(-@height / 2);
+  top: 50%;
+}
+.absolute-width-center(@width) {
+  width: @width;
+  margin-left: calc(-@width / 2);
+  left: 50%;
+}
+.absolute-center(@width, @height) {
+  position: absolute;
+  .absolute-height-center(@height);
+  .absolute-width-center(@width);
+}
+
+:local {
+  .wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 24px;
+  }
+  .iconWrapper {
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > div {
+      transition: background-color 0.3s;
+    }
+  }
+  .line {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: 100%;
+    .absolute-height-center(2px);
+    @left: var(--left-position);
+    &.active {
+      width: calc(@left - 20px);
+      transition: all 0.5s;
+    }
+    .dotted {
+      width: 6px;
+      height: 6px;
+      left: @left;
+      position: absolute;
+      border-radius: 50%;
+      .absolute-height-center(6px);
+      transition: all 0.5s;
+      &::before,
+      &::after {
+        .pseudo-element-display();
+        border-radius: 50%;
+        opacity: 0.2;
+        background: inherit;
+      }
+      &::before {
+        width: 14px;
+        height: 14px;
+        .absolute-center(14px, 14px);
+      }
+      &::after {
+        width: 18px;
+        height: 18px;
+        .absolute-center(18px, 18px);
+      }
+    }
+  }
+
+  .primary {
+    background-color: @main-element;
+  }
+
+  .black {
+    background-color: @grayscale-45;
+  }
+
+  .orange {
+    background-color: @main-element-text;
+  }
+
+  .gray {
+    background-color: @grayscale-25;
+  }
+}

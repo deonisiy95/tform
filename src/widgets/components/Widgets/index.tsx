@@ -3,35 +3,38 @@ import style from './style.less';
 import EmptyBox from 'src/app/components/EmptyBox';
 import {IWidget} from 'src/widgets/@types';
 import Card from 'src/widgets/components/Card';
+import Button from 'UI/Button';
 
 interface IProps {
   widgets: Array<IWidget>;
   loading: boolean;
   onSettings: (id: string) => void;
+  onAdd: () => void;
 }
 
-export default function Widgets({widgets, loading, onSettings}: IProps) {
+export default function Widgets({widgets, loading, onSettings, onAdd}: IProps) {
   return (
     <div className={style.container}>
       {!widgets || widgets.length === 0 ? (
         <EmptyBox
           page='widgets'
-          text='Вы еще не добавили виджет'
-          buttonText={'Добавить новый виджет'}
-          buttonHandler={() => {}}
+          text={l10n('widgets.empty')}
+          buttonText={l10n('widgets.add')}
+          buttonHandler={onAdd}
           loading={loading}
         />
       ) : (
         <>
           <div className={style.promo}>
-            <div className={style.promoText}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cumque fuga illum
-              magni optio quod repellat sit, totam. Aperiam autem esse eveniet nostrum quas quos
-              ullam? Non possimus quis vero.
-            </div>
+            <div className={style.promoText}>{l10n('widgets.promo')}</div>
             <div className={style.promoImage} />
           </div>
-          <div className={style.subtitle}>Подключенные виджеты</div>
+          <div className={style.subtitle}>
+            <span>{l10n('widgets.connected')}</span>
+            <Button onClick={onAdd} size={'sm'} color={'primary'}>
+              {`+ ${l10n('widgets.add')}`}
+            </Button>
+          </div>
           {widgets.map(item => (
             <Card key={item.widgetId} widget={item} onClick={() => onSettings(item.widgetId)} />
           ))}
