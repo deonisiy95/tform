@@ -8,6 +8,7 @@ export interface IModalProps {
   close: VoidFunction;
   className?: string;
   overlayClassName?: string;
+  noPadding?: boolean;
   fullScreen?: boolean;
   onClose?: VoidFunction;
   onEnter?: VoidFunction;
@@ -16,6 +17,7 @@ export interface IModalProps {
 const ModalContent: FC<IModalProps> = ({
   fullScreen = false,
   overlayClassName,
+  noPadding,
   className,
   children,
   onClose,
@@ -29,8 +31,9 @@ const ModalContent: FC<IModalProps> = ({
   });
 
   const containerClassName = cn(style.container, {
-    [style.fullScreen]: !!fullScreen,
-    [className]: !!className
+    [style.fullScreen]: Boolean(fullScreen),
+    [className]: Boolean(className),
+    [style.noPadding]: Boolean(noPadding)
   });
 
   const onCloseCallback = useCallback(() => {

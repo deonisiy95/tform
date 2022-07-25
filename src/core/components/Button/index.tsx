@@ -10,6 +10,7 @@ interface Props {
   isLoad?: boolean;
   disabled?: boolean;
   rounded?: boolean;
+  noFull?: boolean;
 }
 
 export default function Button(props: PropsWithChildren<Props>) {
@@ -20,9 +21,10 @@ export default function Button(props: PropsWithChildren<Props>) {
         className={cn(
           style.button,
           style[`button-${props.color ?? 'primary'}`],
-          style[`button-${props.size}`],
+          style[`button-${props.size ?? 'md'}`],
           {
-            [style.rounded]: props.rounded
+            [style.rounded]: props.rounded,
+            [style.noFull]: props.noFull,
           }
         )}
         disabled={props.disabled || props.isLoad}

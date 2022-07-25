@@ -17,7 +17,7 @@ export default function WidgetsController() {
   const openAdd = useCallback(() => {
     console.log('add');
 
-    Modal(<AddWidget />);
+    Modal(<AddWidget />, {noPadding: true});
   }, []);
 
   return <Widgets widgets={widgets} loading={loading} onSettings={openSettings} onAdd={openAdd} />;

@@ -6,9 +6,10 @@ import Icon from 'UI/Icon';
 interface IProps {
   list: string[];
   active: number;
+  className?: string;
 }
 
-export default function StepsProgress({list, active}: IProps) {
+export default function StepsProgress({list, active, className}: IProps) {
   const boxColor = (i: number) => (i <= active ? style.primary : style.gray);
   const iconColor = (i: number) => (i <= active ? style.orange : style.black);
   const getPosition = useCallback(() => {
@@ -17,7 +18,7 @@ export default function StepsProgress({list, active}: IProps) {
     return `${left}%`;
   }, [active]);
   return (
-    <div className={style.wrapper}>
+    <div className={cn(style.wrapper, [className])}>
       <div
         className={cn(style.line, style.gray)}
         style={{'--left-position': getPosition()} as React.CSSProperties}

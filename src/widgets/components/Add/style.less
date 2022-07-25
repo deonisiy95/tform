@@ -3,13 +3,51 @@
 
 :local {
   .container {
-    padding: 12px 24px 24px 24px;
-    width: 600px;
+    padding: 36px 36px 0 48px;
+    width: 900px;
   }
 
   .title {
     font-size: 22px;
     font-weight: 400;
     margin-bottom: 24px;
+  }
+
+  .content {
+    display: flex;
+    margin-bottom: 24px;
+    padding: 12px 24px 12px 12px;
+  }
+
+  .info {
+    padding-right: 74px;
+    font-size: 18px;
+    line-height: 30px;
+    flex-grow: 1;
+  }
+
+  .progress {
+    margin-bottom: 36px;
+  }
+
+  .image {
+    background-image: url('./images/step_1.webp');
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid @grayscale-30;
+    border-radius: 24px;
+    width: 248px;
+    height: 528px;
+    flex-shrink: 0;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 20px 44px;
+    background-color: @grayscale-15;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
   }
 }
