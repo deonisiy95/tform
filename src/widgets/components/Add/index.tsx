@@ -6,9 +6,15 @@ import Button from 'UI/Button';
 interface IProps {
   step: number;
   onNext: () => void;
+  disableNext: boolean;
 }
 
-export default function AddWidgetComponent({children, onNext, step}: PropsWithChildren<IProps>) {
+export default function AddWidgetComponent({
+  children,
+  onNext,
+  step,
+  disableNext
+}: PropsWithChildren<IProps>) {
   return (
     <>
       <div className={style.container}>
@@ -27,7 +33,7 @@ export default function AddWidgetComponent({children, onNext, step}: PropsWithCh
         </div>
       </div>
       <div className={style.controls}>
-        <Button color={'primary'} onClick={onNext} noFull={true}>
+        <Button color={'primary'} onClick={onNext} noFull={true} disabled={disableNext}>
           {l10n('continue')}
         </Button>
       </div>
