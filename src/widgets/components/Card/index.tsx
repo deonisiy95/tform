@@ -8,11 +8,12 @@ import Button from 'UI/Button';
 interface IProps {
   widget: IWidget;
   onClick: () => void;
+  className?: string;
 }
 
-export default function Card({widget, onClick}: IProps) {
+export default function Card({widget, onClick, className}: IProps) {
   return (
-    <div className={style.container}>
+    <div className={cn(style.container, className)}>
       <div className={style.info}>
         <Icon type='telegram' className={style.icon} />
         <div className={style.title}>{widget.name}</div>
@@ -25,7 +26,7 @@ export default function Card({widget, onClick}: IProps) {
           <div className={style.rowText}>{l10n('widget.agents.notExist')}</div>
         </div>
       </div>
-      <Button onClick={onClick} size='sm' color='azure' rounded={true}>
+      <Button onClick={onClick} size='sm' color='azure'>
         {l10n('settings')}
       </Button>
     </div>

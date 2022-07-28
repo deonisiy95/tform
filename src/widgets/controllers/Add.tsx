@@ -4,6 +4,7 @@ import Field from 'UI/Field';
 import AddWidgetComponent from 'src/widgets/components/Add';
 import {widgetsApiActions} from 'src/widgets/actions/api';
 import {IWidget} from 'src/widgets/@types';
+import {Agent} from 'src/widgets/components/Agent';
 
 interface IValues {
   name: string;
@@ -81,8 +82,9 @@ export default function AddWidget() {
         </ol>
       </>,
       <>
+        <span className={'mg-bt-50'}>{l10n('widgets.add.step.four.text')}</span>
         {values.agents.map(agent => (
-          <div key={agent.id}>{agent.name + ' ' + agent.username}</div>
+          <Agent key={agent.id} name={agent.name ?? agent.username} />
         ))}
       </>
     ],

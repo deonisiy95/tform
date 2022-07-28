@@ -4,6 +4,7 @@ import EmptyBox from 'src/app/components/EmptyBox';
 import {IWidget} from 'src/widgets/@types';
 import Card from 'src/widgets/components/Card';
 import Button from 'UI/Button';
+import {Agent} from 'src/widgets/components/Agent';
 
 interface IProps {
   widgets: Array<IWidget>;
@@ -35,9 +36,17 @@ export default function Widgets({widgets, loading, onSettings, onAdd}: IProps) {
               {`+ ${l10n('widgets.add')}`}
             </Button>
           </div>
-          {widgets.map(item => (
-            <Card key={item.widgetId} widget={item} onClick={() => onSettings(item.widgetId)} />
-          ))}
+          <Agent name={'Denis Batalov'} />
+          <div className={style.list}>
+            {widgets.map(item => (
+              <Card
+                className={style.widget}
+                key={item.widgetId}
+                widget={item}
+                onClick={() => onSettings(item.widgetId)}
+              />
+            ))}
+          </div>
         </>
       )}
     </div>

@@ -16,6 +16,7 @@
   "widgets.add.step.three.sub_step_2": "Найдите своего бота в поиске или перейдите в него по ссылке из сообщения BotFather.",
   "widgets.add.step.three.sub_step_3": "Нажмите «Запустить» для активации бота.",
   "widgets.add.step.three.sub_step_4": "Переходите к следующему шагу.",
+  "widgets.add.step.four.text": "Выберите операторов, которым будут отправляться обращения в Telegram.",
   "widgets.add.field.name": "Придумайте название виджета",
   "widgets.add.field.token.title": "Токен Telegram бота",
   "widgets.add.field.token.text": "Вставьте токен, полученный на предыдущем шаге",
