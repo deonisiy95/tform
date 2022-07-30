@@ -1,5 +1,59 @@
+@import '~styles/colors';
+
 :global {
-  .mg-bt-50 {
+  .h-330 {
+    height: 330px;
+  }
+
+  .m-b-50 {
     margin-bottom: 50px;
+  }
+
+  .block {
+    display: block;
+  }
+
+
+  .scroll {
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-right: 5px solid transparent;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      border-radius: 100px;
+      -webkit-border-radius: 100px;
+    }
+
+    &::-webkit-scrollbar-button:vertical {
+      background-color: transparent;
+      border-top: 1px solid transparent;
+      height: 5px;
+    }
+
+    &::-webkit-scrollbar-button:start:decrement,
+    &::-webkit-scrollbar-button:end:increment {
+      display: block;
+    }
+
+    &::-webkit-scrollbar-button:vertical:start:increment,
+    &::-webkit-scrollbar-button:vertical:end:decrement {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: @grayscale-25;
+      border-radius: 9px;
+      -webkit-border-radius: 9px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: @grayscale-40;
+    }
+
+    &::-webkit-scrollbar-thumb:active {
+      background-color: @grayscale-40;
+    }
   }
 }

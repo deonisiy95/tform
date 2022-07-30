@@ -24,6 +24,19 @@ export default function AddWidget() {
   const tokenRef = useRef<HTMLInputElement>();
   const [step, setStep] = useState(0);
   const [values, setValues] = useState<IValues>({name: '', token: '', agents: []});
+  const onChangeName = () => {
+    setValues({
+      ...values,
+      name: nameRef.current?.value
+    });
+  };
+
+  const onChangeToken = () => {
+    setValues({
+      ...values,
+      token: tokenRef.current?.value
+    });
+  };
 
   const onNext = useCallback(async () => {
     if (step === STEPS.enter_credentials) {
@@ -49,6 +62,10 @@ export default function AddWidget() {
     setStep(step + 1);
   }, [step, values]);
 
+  const disableNext = useMemo(() => {
+    return step === STEPS.enter_credentials && (!values.token || !values.name);
+  }, [step, values]);
+
   const steps = useMemo(
     () => [
       <>
@@ -63,13 +80,18 @@ export default function AddWidget() {
       </>,
       <>
         <Field title={l10n('name')} text={l10n('widgets.add.field.name')}>
-          <Input ref={nameRef} placeholder={l10n('name')} maxLength={30} />
+          <Input ref={nameRef} placeholder={l10n('name')} maxLength={30} onChange={onChangeName} />
         </Field>
         <Field
           title={l10n('widgets.add.field.token.title')}
           text={l10n('widgets.add.field.token.text')}
         >
-          <Input ref={tokenRef} placeholder={l10n('token')} maxLength={100} />
+          <Input
+            ref={tokenRef}
+            placeholder={l10n('token')}
+            maxLength={100}
+            onChange={onChangeToken}
+          />
         </Field>
       </>,
       <>
@@ -82,17 +104,19 @@ export default function AddWidget() {
         </ol>
       </>,
       <>
-        <span className={'mg-bt-50'}>{l10n('widgets.add.step.four.text')}</span>
-        {values.agents.map(agent => (
-          <Agent key={agent.id} name={agent.name ?? agent.username} />
-        ))}
+        <span className={'m-b-50 block'}>{l10n('widgets.add.step.four.text')}</span>
+        <div className={'scroll h-330'}>
+          {values.agents.map(agent => (
+            <Agent key={agent.id} name={agent.name ?? agent.username} />
+          ))}
+        </div>
       </>
     ],
-    [step, values.agents]
+    [step, values]
   );
 
   return (
-    <AddWidgetComponent onNext={onNext} step={step} disableNext={false}>
+    <AddWidgetComponent onNext={onNext} step={step} disableNext={disableNext}>
       {steps[step]}
     </AddWidgetComponent>
   );
