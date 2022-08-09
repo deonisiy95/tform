@@ -2,6 +2,7 @@ import React, {PropsWithChildren} from 'react';
 import style from './style.less';
 import StepsProgress from 'UI/StepsProgress';
 import Button from 'UI/Button';
+import cn from 'classnames';
 
 interface IProps {
   step: number;
@@ -29,7 +30,7 @@ export default function AddWidgetComponent({
             />
             {children}
           </div>
-          <div className={style.image} />
+          <div className={cn(style.image, step < 2 ? style.imageCreate : style.imageStart)} />
         </div>
       </div>
       <div className={style.controls}>

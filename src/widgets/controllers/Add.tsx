@@ -5,6 +5,8 @@ import AddWidgetComponent from 'src/widgets/components/Add';
 import {widgetsApiActions} from 'src/widgets/actions/api';
 import {IWidget} from 'src/widgets/@types';
 import {Agent} from 'src/widgets/components/Agent';
+import useDispatcher from 'src/core/hooks/useDispatcher';
+import {widgetActions} from 'src/widgets/stores';
 
 interface IValues {
   name: string;
@@ -16,19 +18,34 @@ enum STEPS {
   create_bot = 0,
   enter_credentials = 1,
   start_bot = 2,
-  create_widget = 3
+  add_agents = 3,
+  create_widget = 4
 }
 
 export default function AddWidget() {
   const nameRef = useRef<HTMLInputElement>();
   const tokenRef = useRef<HTMLInputElement>();
   const [step, setStep] = useState(0);
+  const [agentIds, setAgentIds] = useState([]);
+  const addWidget = useDispatcher(widgetActions.add);
   const [values, setValues] = useState<IValues>({name: '', token: '', agents: []});
   const onChangeName = () => {
     setValues({
       ...values,
       name: nameRef.current?.value
     });
+  };
+
+  const onChangeAgents = (id: number) => {
+    let newIds = [];
+
+    if (agentIds.includes(id)) {
+      newIds = [...agentIds.filter(item => item !== id)];
+    } else {
+      newIds = [...agentIds, id];
+    }
+
+    setAgentIds(newIds);
   };
 
   const onChangeToken = () => {
@@ -55,16 +72,42 @@ export default function AddWidget() {
           setValues({...values, agents: result.agents});
         }
       } catch (error) {
-        console.error('Error request create widget', error);
+        console.error('Error request check widget', error);
       }
     }
 
+    if (step === STEPS.add_agents) {
+      try {
+        const result = await widgetsApiActions.create({
+          token: values.token,
+          name: values.name,
+          agents: agentIds.filter(id => agentIds.includes(id))
+        });
+
+        if (result) {
+          addWidget(result);
+        }
+      } catch (error) {
+        console.error('Error request create widget', error);
+      }
+
+      return;
+    }
+
     setStep(step + 1);
-  }, [step, values]);
+  }, [step, values, agentIds]);
 
   const disableNext = useMemo(() => {
-    return step === STEPS.enter_credentials && (!values.token || !values.name);
-  }, [step, values]);
+    if (step === STEPS.enter_credentials) {
+      return !values.token || !values.name;
+    }
+
+    if (step === STEPS.add_agents) {
+      return agentIds.length === 0;
+    }
+
+    return false;
+  }, [step, values, agentIds]);
 
   const steps = useMemo(
     () => [
@@ -107,12 +150,16 @@ export default function AddWidget() {
         <span className={'m-b-50 block'}>{l10n('widgets.add.step.four.text')}</span>
         <div className={'scroll h-330'}>
           {values.agents.map(agent => (
-            <Agent key={agent.id} name={agent.name ?? agent.username} />
+            <Agent
+              key={agent.id}
+              name={agent.name ?? agent.username}
+              onSelect={() => onChangeAgents(agent.id)}
+            />
           ))}
         </div>
       </>
     ],
-    [step, values]
+    [step, values, agentIds]
   );
 
   return (

@@ -1,5 +1,5 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import {IWidgetStore} from 'src/widgets/@types';
+import {createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
+import {IWidget, IWidgetStore} from 'src/widgets/@types';
 import {widgetsApiActions} from 'src/widgets/actions/api';
 
 const initialState: IWidgetStore = {
@@ -20,7 +20,11 @@ export const getWidgets = createAsyncThunk('widgets/get', async () => {
 export const widgetsSlice = createSlice({
   name: 'widgets',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    add: (state, action: PayloadAction<IWidget>) => {
+      state.data.push(action.payload);
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(getWidgets.pending, state => {
@@ -37,5 +41,6 @@ export const widgetsSlice = createSlice({
 });
 
 const widgetReducers = widgetsSlice.reducer;
+const widgetActions = widgetsSlice.actions;
 
-export {widgetReducers};
+export {widgetReducers, widgetActions};

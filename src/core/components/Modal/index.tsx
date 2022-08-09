@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import cn from 'classnames';
 import style from './style.less';
 import useIcon from 'src/core/hooks/useIcon';
+import {Provider} from 'react-redux';
+import store from 'src/store';
 
 export interface IModalProps {
   close: VoidFunction;
@@ -68,9 +70,11 @@ export const Modal = (component: React.ReactElement, props: Omit<IModalProps, 'c
     ReactDOM.unmountComponentAtNode(element);
   };
   const content = (
-    <ModalContent {...props} close={close}>
-      {component}
-    </ModalContent>
+    <Provider store={store}>
+      <ModalContent {...props} close={close}>
+        {component}
+      </ModalContent>
+    </Provider>
   );
 
   ReactDOM.render(content, element);

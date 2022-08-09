@@ -12,7 +12,7 @@ export const widgetsApiActions = {
     token: string;
     name: string;
     agents: IWidget['agents'];
-  }): Promise<IWidget['agents'][]> => {
+  }): Promise<IWidget> => {
     return Api.send('widgets', 'POST', data);
   }
 };
