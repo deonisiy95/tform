@@ -2,6 +2,7 @@
   "settings": "Настройки",
   "name": "Название",
   "continue": "Продолжить",
+  "back": "Назад",
   "token": "Токен",
   "widgets.connected": "Подключенные виджеты",
   "widgets.add": "Добавить новый виджет",
@@ -17,11 +18,13 @@
   "widgets.add.step.three.sub_step_3": "Напишите боту с аккаунтов, в которые хотите получать обращения.",
   "widgets.add.step.three.sub_step_4": "Переходите к следующему шагу.",
   "widgets.add.step.four.text": "Выберите операторов, которым будут отправляться обращения в Telegram.",
+  "widgets.add.step.four.not_agent": "Нет информации по операторам, выполните предыдущий пункт заново.",
   "widgets.add.field.name": "Придумайте название виджета",
   "widgets.add.field.token.title": "Токен Telegram бота",
   "widgets.add.field.token.text": "Вставьте токен, полученный на предыдущем шаге",
   "widgets.add.title": "Добавление виджета",
   "widgets.empty": "Вы еще не добавили виджет",
   "widgets.promo": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cumque fuga illum\nmagni optio quod repellat sit, totam. Aperiam autem esse eveniet nostrum quas quos\nullam? Non possimus quis vero.",
-  "widget.agents.notExist": "Нет назначенных агентов"
+  "widget.agents.notExist": "Нет назначенных агентов",
+  "widget.stat.notExist": "Нет данных по обращениям"
 }

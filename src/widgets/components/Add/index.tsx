@@ -7,12 +7,16 @@ import cn from 'classnames';
 interface IProps {
   step: number;
   onNext: () => void;
+  onPrev: () => void;
+  showPrevButton: boolean;
   disableNext: boolean;
 }
 
 export default function AddWidgetComponent({
   children,
   onNext,
+  onPrev,
+  showPrevButton,
   step,
   disableNext
 }: PropsWithChildren<IProps>) {
@@ -34,6 +38,11 @@ export default function AddWidgetComponent({
         </div>
       </div>
       <div className={style.controls}>
+        {showPrevButton ? (
+          <Button color={'light'} onClick={onPrev} noFull={true}>
+            {l10n('back')}
+          </Button>
+        ) : null}
         <Button color={'primary'} onClick={onNext} noFull={true} disabled={disableNext}>
           {l10n('continue')}
         </Button>

@@ -1,4 +1,5 @@
 {
   "settings": "Settings",
-  "widget.agents.notExist": "No assigned agents"
+  "widget.agents.notExist": "No assigned agents",
+  "widget.stat.notExist": "Not exist stat data"
 }

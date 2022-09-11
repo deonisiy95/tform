@@ -8,6 +8,10 @@ import {Agent} from 'src/widgets/components/Agent';
 import useDispatcher from 'src/core/hooks/useDispatcher';
 import {widgetActions} from 'src/widgets/stores';
 
+interface IProps {
+  close: () => void;
+}
+
 interface IValues {
   name: string;
   token: string;
@@ -22,7 +26,7 @@ enum STEPS {
   create_widget = 4
 }
 
-export default function AddWidget() {
+export default function AddWidget({close}: IProps) {
   const nameRef = useRef<HTMLInputElement>();
   const tokenRef = useRef<HTMLInputElement>();
   const [step, setStep] = useState(0);
@@ -37,7 +41,7 @@ export default function AddWidget() {
   };
 
   const onChangeAgents = (id: number) => {
-    let newIds = [];
+    let newIds: number[];
 
     if (agentIds.includes(id)) {
       newIds = [...agentIds.filter(item => item !== id)];
@@ -54,6 +58,10 @@ export default function AddWidget() {
       token: tokenRef.current?.value
     });
   };
+
+  const onPrev = useCallback(() => {
+    setStep(step - 1);
+  }, [step]);
 
   const onNext = useCallback(async () => {
     if (step === STEPS.enter_credentials) {
@@ -78,14 +86,23 @@ export default function AddWidget() {
 
     if (step === STEPS.add_agents) {
       try {
+        const agents = [];
+
+        values.agents.forEach(agent => {
+          if (agentIds.includes(agent.id)) {
+            agents.push(agent);
+          }
+        });
+
         const result = await widgetsApiActions.create({
           token: values.token,
           name: values.name,
-          agents: agentIds.filter(id => agentIds.includes(id))
+          agents
         });
 
         if (result) {
           addWidget(result);
+          close?.();
         }
       } catch (error) {
         console.error('Error request create widget', error);
@@ -123,7 +140,13 @@ export default function AddWidget() {
       </>,
       <>
         <Field title={l10n('name')} text={l10n('widgets.add.field.name')}>
-          <Input ref={nameRef} placeholder={l10n('name')} maxLength={30} onChange={onChangeName} />
+          <Input
+            ref={nameRef}
+            value={values.name}
+            placeholder={l10n('name')}
+            maxLength={30}
+            onChange={onChangeName}
+          />
         </Field>
         <Field
           title={l10n('widgets.add.field.token.title')}
@@ -134,6 +157,7 @@ export default function AddWidget() {
             placeholder={l10n('token')}
             maxLength={100}
             onChange={onChangeToken}
+            value={values.token}
           />
         </Field>
       </>,
@@ -149,13 +173,15 @@ export default function AddWidget() {
       <>
         <span className={'m-b-50 block'}>{l10n('widgets.add.step.four.text')}</span>
         <div className={'scroll h-330'}>
-          {values.agents.map(agent => (
-            <Agent
-              key={agent.id}
-              name={agent.name ?? agent.username}
-              onSelect={() => onChangeAgents(agent.id)}
-            />
-          ))}
+          {values.agents.length > 0
+            ? values.agents.map(agent => (
+              <Agent
+                key={agent.id}
+                name={agent.name ?? agent.username}
+                onSelect={() => onChangeAgents(agent.id)}
+              />
+            ))
+            : l10n('widgets.add.step.four.not_agent')}
         </div>
       </>
     ],
@@ -163,7 +189,13 @@ export default function AddWidget() {
   );
 
   return (
-    <AddWidgetComponent onNext={onNext} step={step} disableNext={disableNext}>
+    <AddWidgetComponent
+      onNext={onNext}
+      onPrev={onPrev}
+      showPrevButton={step !== 0}
+      step={step}
+      disableNext={disableNext}
+    >
       {steps[step]}
     </AddWidgetComponent>
   );
