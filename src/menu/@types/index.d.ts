@@ -1,1 +1,1 @@
-export type TSection = 'dashboard' | 'widgets';
+export type TSection = 'dashboard' | 'widgets' | 'logout';
