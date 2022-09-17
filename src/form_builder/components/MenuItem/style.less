@@ -1,0 +1,23 @@
+@import '~styles/colors';
+
+:local {
+  .item {
+    height: 30px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: @grayscale-15;
+      & > div {
+        display: block;
+      }
+    }
+
+    div {
+      display: none;
+    }
+  }
+}

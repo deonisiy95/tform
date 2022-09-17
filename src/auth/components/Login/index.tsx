@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import style from './style.less';
 import Link from 'UI/Link';
 import Button from 'UI/Button';
@@ -15,9 +15,31 @@ interface IProps {
 export default function LoginComponent({onClick, toSignUp, processing, error}: IProps) {
   const inputEmail = useRef<HTMLInputElement>();
   const inputPassword = useRef<HTMLInputElement>();
+  const [invalidEmail, setInvalidEmail] = useState(false);
+  const [invalidPass, setInvalidPass] = useState(false);
 
   const signIn = () => {
+    if (!checkFields()) {
+      return;
+    }
+
     onClick(inputEmail.current.value, inputPassword.current.value);
+  };
+
+  const checkFields = (): boolean => {
+    let result = true;
+
+    if (!inputEmail.current.value?.trim()) {
+      setInvalidEmail(true);
+      result = false;
+    }
+
+    if (!inputPassword.current.value?.trim()) {
+      setInvalidPass(true);
+      result = false;
+    }
+
+    return result;
   };
 
   return (
@@ -29,12 +51,14 @@ export default function LoginComponent({onClick, toSignUp, processing, error}: I
           <Input
             placeholder={'Email'}
             ref={inputEmail}
-            defaultValue={'batalov@mail.ru'}
+            invalid={invalidEmail}
+            type={'email'}
           />
           <Input
             placeholder={'Пароль'}
             ref={inputPassword}
-            defaultValue={'batalov'}
+            invalid={invalidPass}
+            type={'password'}
           />
         </div>
         {<span className={cn(style.errorContainer, {[style.error]: error})}>{error}</span>}

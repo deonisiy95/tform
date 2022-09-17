@@ -26,5 +26,7 @@
   "widgets.empty": "Вы еще не добавили виджет",
   "widgets.promo": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cumque fuga illum\nmagni optio quod repellat sit, totam. Aperiam autem esse eveniet nostrum quas quos\nullam? Non possimus quis vero.",
   "widget.agents.notExist": "Нет назначенных агентов",
-  "widget.stat.notExist": "Нет данных по обращениям"
+  "widget.stat.notExist": "Нет данных по обращениям",
+  "widget.settings.options": "Опции",
+  "widget.settings.design": "Дизайн"
 }

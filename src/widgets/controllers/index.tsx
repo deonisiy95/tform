@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import {selectWidgets, selectWidgetsLoading} from 'src/widgets/selectors';
 import {Modal} from 'UI/Modal';
 import AddWidget from 'src/widgets/controllers/Add';
+import {SettingsWidget} from 'src/widgets/controllers/Settings';
 
 export default function WidgetsController() {
   const widgets = useSelector(selectWidgets);
@@ -11,7 +12,7 @@ export default function WidgetsController() {
   const openSettings = useCallback((id: string) => {
     console.log(id);
 
-    Modal(<div>Hello</div>);
+    Modal(<SettingsWidget widget_id={id}/>);
   }, []);
 
   const openAdd = useCallback(() => {

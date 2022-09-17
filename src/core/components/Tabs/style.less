@@ -1,0 +1,66 @@
+@import '~styles/colors';
+
+:local {
+  .tabs {
+    display: flex;
+    flex-direction: row;
+    margin: 8px 0;
+    border-bottom: 1px solid;
+    gap: 12px;
+  }
+
+  .tabContainer {
+    position: relative;
+    height: 40px;
+
+    &.active {
+      &:before {
+        visibility: unset;
+      }
+
+      .tab {
+        font-weight: 400;
+      }
+    }
+
+    &:hover {
+      .tab {
+        font-weight: 400;
+      }
+    }
+
+    &:before {
+      content: '';
+      border-bottom: 3px solid;
+      width: 100%;
+      position: absolute;
+      bottom: -1px;
+      visibility: hidden;
+    }
+  }
+
+  .tab {
+    height: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+      content: attr(aria-label);
+      text-decoration: inherit;
+    }
+
+    &:before {
+      font-weight: bold;
+      visibility: hidden;
+    }
+
+    &:after {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}

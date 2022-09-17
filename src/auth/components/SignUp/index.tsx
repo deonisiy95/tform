@@ -25,17 +25,17 @@ export default function SignUpComponent({onClick, toLogin, error, processing}: I
   const checkFields = (): boolean => {
     let result = true;
 
-    if (!inputName.current.value) {
+    if (!inputName.current.value?.trim()) {
       setInvalidName(true);
       result = false;
     }
 
-    if (!inputEmail.current.value) {
+    if (!inputEmail.current.value?.trim()) {
       setInvalidEmail(true);
       result = false;
     }
 
-    if (!inputPassword.current.value) {
+    if (!inputPassword.current.value?.trim()) {
       setInvalidPass(true);
       result = false;
     }
