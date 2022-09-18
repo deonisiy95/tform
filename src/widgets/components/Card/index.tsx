@@ -1,9 +1,10 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import style from './style.less';
 import {IWidget} from 'src/widgets/@types';
 import Icon from 'UI/Icon';
 import cn from 'classnames';
 import Button from 'UI/Button';
+import {useAgentsList} from 'src/widgets/hooks/useAgentsList';
 
 interface IProps {
   widget: IWidget;
@@ -12,13 +13,7 @@ interface IProps {
 }
 
 export default function Card({widget, onClick, className}: IProps) {
-  const agentList = useMemo(() => {
-    if (!widget.agents.length) {
-      return l10n('widget.agents.notExist');
-    }
-
-    return widget.agents.map(agent => agent.name ?? agent.username).join(', ');
-  }, [widget.agents]);
+  const agentList = useAgentsList(widget.agents);
 
   return (
     <div className={cn(style.container, className)}>
