@@ -44,6 +44,41 @@
     }
   }
 
+  *[data-hint]:before {
+    color: @grayscale-0;
+    border-radius: 6px;
+    background-color: @grayscale-90;
+    font-size: 14px;
+    padding: 5px 12px;
+    display: none;
+    content: attr(data-hint);
+    position: absolute;
+    z-index: 100;
+    max-width: 230px;
+
+    &:hover {
+      display: block;
+    }
+
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    text-transform: initial;
+    text-align: center;
+    white-space: nowrap;
+    top: auto;
+    left: 50%;
+    bottom: 150%;
+    transform: translate(-50%, 0%);
+  }
+
+  *[data-hint]:hover {
+    position: relative;
+  }
+
+  *[data-hint]:hover:before {
+    display: block;
+  }
+
   .block {
     display: block;
   }

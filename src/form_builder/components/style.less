@@ -4,15 +4,20 @@
   .container {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    height: calc(100% - 62px);
+    padding-right: 8px;
   }
 
   .menu {
     flex-basis: 20%;
+    padding-top: 16px;
+    padding-right: 8px;
   }
 
   .content {
-    flex-grow: 1;
+    flex-basis: 50%;
+    background-color: @grayscale-15;
+    min-width: 300px;
   }
 
   .settings {

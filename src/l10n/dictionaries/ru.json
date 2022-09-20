@@ -5,6 +5,8 @@
   "back": "Назад",
   "token": "Токен",
   "agents": "Опраторы",
+  "remove": "Удалить",
+  "enter.text": "Введите текст",
   "widgets.connected": "Подключенные виджеты",
   "widgets.add": "Добавить новый виджет",
   "widgets.add.step.one.text": "Для подключения вам необходимо создать Telegram бота",
@@ -30,5 +32,7 @@
   "widget.stat.notExist": "Нет данных по обращениям",
   "widget.settings.options": "Опции",
   "widget.settings.options.agents.text": "Операторы, которые принимают обращения в Telegram",
-  "widget.settings.design": "Дизайн"
+  "widget.settings.design": "Дизайн",
+  "widget.settings.design.control.down": "Переместить вниз",
+  "widget.settings.design.control.up": "Переместить вверх"
 }
