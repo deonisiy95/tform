@@ -1,20 +1,24 @@
 import React, {FC} from 'react';
 import style from './style.less';
 import {MenuItem} from 'src/form_builder/components/MenuItem';
-import {Form} from 'src/form_builder/components/Form';
+import {TTypeControl} from 'src/form_builder/@types/formBuilder';
 
-export const FormBuilder: FC = () => {
+interface IProps {
+  onAddControl?: (type: TTypeControl) => void;
+  form: React.ReactNode;
+  options: React.ReactNode;
+}
+
+export const FormBuilder: FC<IProps> = ({form, options, onAddControl}) => {
   return (
     <div className={style.container}>
       <div className={style.menu}>
-        <MenuItem type={'Input'} title={'input'} onClick={t => console.log(t)} />
-        <MenuItem type={'Checkbox'} title={'checkbox'} onClick={t => console.log(t)} />
-        <MenuItem type={'Text'} title={'text'} onClick={t => console.log(t)} />
+        <MenuItem type={'Input'} title={'input'} onClick={() => onAddControl('input')} />
+        <MenuItem type={'Checkbox'} title={'checkbox'} onClick={() => onAddControl('title')} />
+        <MenuItem type={'Text'} title={'text'} onClick={() => onAddControl('text')} />
       </div>
-      <div className={style.content}>
-        <Form />
-      </div>
-      <div className={style.settings}></div>
+      <div className={style.content}>{form}</div>
+      <div className={style.settings}>{options}</div>
     </div>
   );
 };

@@ -1,0 +1,16 @@
+import React, {FC} from 'react';
+import Input from 'UI/Input';
+import Field from 'UI/Field';
+import {TTextControl} from 'src/form_builder/@types/formBuilder';
+
+interface IProps {
+  control: TTextControl;
+}
+
+export const TitleOptions: FC<IProps> = ({control}) => {
+  return (
+    <Field title={l10n('title')} >
+      <Input defaultValue={control.value} placeholder={'enter.title'} />
+    </Field>
+  );
+};

@@ -5,14 +5,15 @@ import Icon from 'UI/Icon';
 
 interface IProps {
   isActive: boolean;
+  onClick: () => void;
   // onUp: () => void;
   // onDown: () => void;
   // onDelete: () => void;
 }
 
-export const FormItem: FC<IProps> = ({isActive, children}) => {
+export const FormItem: FC<IProps> = ({isActive, onClick, children}) => {
   return (
-    <div className={cn(style.container, {[style.active]: isActive})}>
+    <div className={cn(style.container, {[style.active]: isActive})} onClick={onClick}>
       <div className={style.content}>{children}</div>
       <div className={style.menu}>
         <div className={style.button} data-hint={l10n('widget.settings.design.control.up')}>
