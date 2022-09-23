@@ -10,7 +10,7 @@ interface IProps {
 export const TextOptions: FC<IProps> = ({control}) => {
   return (
     <Field title={l10n('text')} >
-      <Input defaultValue={control.value} placeholder={'enter.text'} />
+      <Input defaultValue={control.value} placeholder={l10n('enter.title')} />
     </Field>
   );
 };

@@ -9,7 +9,10 @@ interface IProps {
 }
 
 export const MenuItem: FC<IProps> = ({type, title, onClick}: IProps) => {
-  const clickHandler = useCallback(() => onClick(type), [type, onClick]);
+  const clickHandler = useCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    onClick(type);
+  }, [type, onClick]);
 
   return (
     <div className={style.item} onClick={clickHandler}>

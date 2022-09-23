@@ -10,7 +10,7 @@ interface IProps {
 export const TitleOptions: FC<IProps> = ({control}) => {
   return (
     <Field title={l10n('title')} >
-      <Input defaultValue={control.value} placeholder={'enter.title'} />
+      <Input defaultValue={control.value} placeholder={l10n('enter.title')} />
     </Field>
   );
 };
