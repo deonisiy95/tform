@@ -2,7 +2,9 @@ import React, {FC, useCallback} from 'react';
 import style from './style.less';
 import {FormItem} from 'src/form_builder/components/FormItem';
 import {TControl, TForm} from 'src/form_builder/@types/formBuilder';
-import {TextControl} from 'src/form_builder/components/TextControl';
+import {TextControl} from 'src/form_builder/components/Form/Controls/Text';
+import {TitleControl} from 'src/form_builder/components/Form/Controls/Title';
+import {InputControl} from 'src/form_builder/components/Form/Controls/Input';
 
 interface IProps {
   form: TForm;
@@ -16,16 +18,22 @@ export const Form: FC<IProps> = ({form, active, setActive}) => {
       case 'text':
         return <TextControl value={control.value} />;
       case 'title':
-        return <div>Title control</div>;
+        return <TitleControl value={control.value} />;
+      case 'input':
+        return <InputControl value={control.value} />;
       default:
         return null;
     }
   }, []);
 
+  const onSelect = (index: number) => () => {
+    setActive(index);
+  };
+
   return (
     <div className={style.form}>
       {form.map((field, index) => (
-        <FormItem key={index} onClick={() => setActive(index)} isActive={index === active}>
+        <FormItem key={index} onClick={onSelect(index)} isActive={index === active}>
           {getFieldControl(field)}
         </FormItem>
       ))}

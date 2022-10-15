@@ -2,21 +2,23 @@ export type TForm = Array<TControl>;
 
 export type TTypeControl = 'input' | 'text' | 'title';
 
-export type TBaseControl = {
-  type: TTypeControl;
-  require?: boolean;
-};
+export type TControl = ITextControl | ITitleControl | IInputControl;
 
-export type TControl = TTextControl | TTitleControl;
-
-type TTextControl = TBaseControl & {
+export interface ITextControl {
+  type: 'text';
   value: string;
-};
+}
 
-type TTitleControl = TBaseControl & {
+export interface ITitleControl {
+  type: 'title';
   value: string;
-};
+}
 
-type TInputControl = {
-  value: string;
-};
+export interface IInputControl {
+  type: 'input';
+  value: {
+    title: string;
+    text: string;
+    placeholder: string;
+  };
+}

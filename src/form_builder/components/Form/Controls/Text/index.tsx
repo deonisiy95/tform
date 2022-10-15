@@ -1,9 +1,10 @@
 import React, {FC} from 'react';
 import style from './style.less';
 import cn from 'classnames';
+import {ITextControl} from 'src/form_builder/@types/formBuilder';
 
 interface IProps {
-  value: string;
+  value: ITextControl['value'];
 }
 
 export const TextControl: FC<IProps> = ({value}) => {

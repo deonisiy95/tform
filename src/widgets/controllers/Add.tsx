@@ -139,7 +139,11 @@ export default function AddWidget({close}: IProps) {
         </ol>
       </>,
       <>
-        <Field title={l10n('name')} text={l10n('widgets.add.field.name')}>
+        <Field
+          className={'m-b-24'}
+          title={l10n('name')}
+          text={l10n('widgets.add.field.name')}
+        >
           <Input
             ref={nameRef}
             value={values.name}
@@ -149,6 +153,7 @@ export default function AddWidget({close}: IProps) {
           />
         </Field>
         <Field
+          className={'m-b-24'}
           title={l10n('widgets.add.field.token.title')}
           text={l10n('widgets.add.field.token.text')}
         >

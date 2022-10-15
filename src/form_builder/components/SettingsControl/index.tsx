@@ -1,23 +1,40 @@
-import React, {FC, useMemo} from 'react';
+import React, {FC, useCallback, useMemo} from 'react';
 import {TControl} from 'src/form_builder/@types/formBuilder';
-import {TextOptions} from 'src/form_builder/components/SettingsControl/Title';
-import {TitleOptions} from 'src/form_builder/components/SettingsControl/Text';
+import {TextOptions} from 'src/form_builder/components/SettingsControl/Text';
+import {TitleOptions} from 'src/form_builder/components/SettingsControl/Title';
+import {InputOptions} from 'src/form_builder/components/SettingsControl/Input';
+import style from './style.less';
+import {ActionsButtons} from 'src/form_builder/components/SettingsControl/ActionsButtons';
 
 interface IProps {
+  index: number;
   control: TControl;
+  onChange: (value: TControl['value']) => void;
+  onUp: (index: number) => void;
+  onDown: (index: number) => void;
 }
 
-export const SettingsControl: FC<IProps> = ({control}) => {
+export const SettingsControl: FC<IProps> = ({control, onChange, onUp, onDown, index}) => {
   const controlOptions = useMemo(() => {
     switch (control.type) {
       case 'text':
-        return <TextOptions control={control} />;
+        return <TextOptions value={control.value} onChange={onChange} />;
       case 'title':
-        return <TitleOptions control={control} />;
+        return <TitleOptions value={control.value} onChange={onChange} />;
+      case 'input':
+        return <InputOptions value={control.value} onChange={onChange} />;
       default:
         return null;
     }
   }, [control]);
 
-  return <div>{controlOptions}</div>;
+  const upHandler = useCallback(() => onUp(index), [index]);
+  const downHandler = useCallback(() => onDown(index), [index]);
+
+  return (
+    <div className={style.options}>
+      {controlOptions}
+      <ActionsButtons onUp={upHandler} onDown={downHandler} />
+    </div>
+  );
 };
