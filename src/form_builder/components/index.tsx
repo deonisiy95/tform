@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import style from './style.less';
 import {MenuItem} from 'src/form_builder/components/MenuItem';
 import {TTypeControl} from 'src/form_builder/@types/formBuilder';
+import cn from 'classnames';
 
 interface IProps {
   onAddControl?: (type: TTypeControl) => void;
@@ -17,7 +18,7 @@ export const FormBuilder: FC<IProps> = ({form, options, onAddControl}) => {
         <MenuItem type={'Checkbox'} title={'checkbox'} onClick={() => onAddControl('title')} />
         <MenuItem type={'Text'} title={'text'} onClick={() => onAddControl('text')} />
       </div>
-      <div className={style.content}>{form}</div>
+      <div className={cn(style.content, 'scroll')}>{form}</div>
       <div className={style.settings}>{options}</div>
     </div>
   );
