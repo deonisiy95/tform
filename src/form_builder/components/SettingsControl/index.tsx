@@ -12,9 +12,10 @@ interface IProps {
   onChange: (value: TControl['value']) => void;
   onUp: (index: number) => void;
   onDown: (index: number) => void;
+  onDelete: (index: number) => void;
 }
 
-export const SettingsControl: FC<IProps> = ({control, onChange, onUp, onDown, index}) => {
+export const SettingsControl: FC<IProps> = ({control, onChange, onUp, onDown, onDelete, index}) => {
   const controlOptions = useMemo(() => {
     switch (control.type) {
       case 'text':
@@ -30,11 +31,12 @@ export const SettingsControl: FC<IProps> = ({control, onChange, onUp, onDown, in
 
   const upHandler = useCallback(() => onUp(index), [index]);
   const downHandler = useCallback(() => onDown(index), [index]);
+  const deleteHandler = useCallback(() => onDelete(index), [index]);
 
   return (
     <div className={style.options}>
       {controlOptions}
-      <ActionsButtons onUp={upHandler} onDown={downHandler} />
+      <ActionsButtons onUp={upHandler} onDown={downHandler} onDelete={deleteHandler} />
     </div>
   );
 };

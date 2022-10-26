@@ -72,6 +72,23 @@ export const FormBuilderController: FC = () => {
     [form]
   );
 
+  const onDelete = useCallback(
+    (index: number) => {
+      if (typeof index !== 'number') {
+        return;
+      }
+
+      const list = Object.assign([], form);
+
+      list.splice(index, 1);
+
+      setActive(0);
+
+      setForm(list);
+    },
+    [form]
+  );
+
   const formComponent = useMemo(() => <Form form={form} active={active} setActive={setActive} />, [
     active,
     form
@@ -85,6 +102,7 @@ export const FormBuilderController: FC = () => {
         onChange={onChange}
         onUp={onUp}
         onDown={onDown}
+        onDelete={onDelete}
       />
     );
   }, [active, form]);

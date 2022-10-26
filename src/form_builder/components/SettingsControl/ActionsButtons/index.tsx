@@ -5,9 +5,10 @@ import Icon from 'UI/Icon';
 interface IProps {
   onUp: VoidFunction;
   onDown: VoidFunction;
+  onDelete: VoidFunction;
 }
 
-export const ActionsButtons: FC<IProps> = ({onUp, onDown}: IProps) => {
+export const ActionsButtons: FC<IProps> = ({onUp, onDown, onDelete}: IProps) => {
   return (
     <div className={style.menu}>
       <div
@@ -24,7 +25,7 @@ export const ActionsButtons: FC<IProps> = ({onUp, onDown}: IProps) => {
       >
         <Icon type={'arrow'} className={style.down} />
       </div>
-      <div className={style.button} data-hint={l10n('remove')}>
+      <div className={style.button} data-hint={l10n('remove')} onClick={onDelete}>
         <Icon type={'cross'} className={style.delete} />
       </div>
     </div>
