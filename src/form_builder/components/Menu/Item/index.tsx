@@ -1,11 +1,12 @@
 import React, {FC, useCallback} from 'react';
 import style from './style.less';
 import Icon from 'UI/Icon';
+import {TTypeControl} from 'src/form_builder/@types/formBuilder';
 
 interface IProps {
-  type: string;
+  type: TTypeControl;
   title: string;
-  onClick: (type: string) => void;
+  onClick: (type: TTypeControl) => void;
 }
 
 export const MenuItem: FC<IProps> = ({type, title, onClick}: IProps) => {

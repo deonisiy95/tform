@@ -1,6 +1,6 @@
 import React, {FC, useCallback} from 'react';
 import style from './style.less';
-import {FormItem} from 'src/form_builder/components/FormItem';
+import {FormItem} from './Item';
 import {TControl, TForm} from 'src/form_builder/@types/formBuilder';
 import {TextControl} from 'src/form_builder/components/Form/Controls/Text';
 import {TitleControl} from 'src/form_builder/components/Form/Controls/Title';

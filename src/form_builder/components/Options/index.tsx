@@ -1,10 +1,11 @@
 import React, {FC, useCallback, useMemo} from 'react';
 import {TControl} from 'src/form_builder/@types/formBuilder';
-import {TextOptions} from 'src/form_builder/components/SettingsControl/Text';
-import {TitleOptions} from 'src/form_builder/components/SettingsControl/Title';
-import {InputOptions} from 'src/form_builder/components/SettingsControl/Input';
+import {TextOptions} from './Controls/Text';
+import {TitleOptions} from './Controls/Title';
+import {InputOptions} from './Controls/Input';
+import {ActionsButtons} from './ActionsButtons';
+
 import style from './style.less';
-import {ActionsButtons} from 'src/form_builder/components/SettingsControl/ActionsButtons';
 
 interface IProps {
   index: number;

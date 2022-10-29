@@ -1,8 +1,11 @@
 import React, {FC, useMemo, useState, useCallback} from 'react';
 import {FormBuilder} from 'src/form_builder/components';
-import {TControl, TForm} from 'src/form_builder/@types/formBuilder';
+import {TControl, TForm, TTypeControl} from 'src/form_builder/@types/formBuilder';
 import {Form} from 'src/form_builder/components/Form';
-import {SettingsControl} from 'src/form_builder/components/SettingsControl';
+import {SettingsControl} from 'src/form_builder/components/Options';
+import {initControl} from 'src/form_builder/components/Menu';
+
+const menuItems: TTypeControl[] = ['input', 'title', 'text'];
 
 export const FormBuilderController: FC = () => {
   const [active, setActive] = useState(0);
@@ -107,5 +110,25 @@ export const FormBuilderController: FC = () => {
     );
   }, [active, form]);
 
-  return <FormBuilder form={formComponent} options={optionsComponent} />;
+  const onAdd = useCallback(
+    (type: TTypeControl) => {
+      const list = Object.assign([], form);
+
+      list.push(initControl(type));
+
+      setActive(list.length - 1);
+
+      setForm(list);
+    },
+    [form]
+  );
+
+  return (
+    <FormBuilder
+      items={menuItems}
+      form={formComponent}
+      options={optionsComponent}
+      onAddControl={onAdd}
+    />
+  );
 };
