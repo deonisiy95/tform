@@ -12,7 +12,7 @@ export const InputOptions: FC<IProps> = ({value, onChange}) => {
   const handleChange = (type: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value?.trim();
 
-    if (newValue === value.text) {
+    if (newValue === value[type]) {
       return;
     }
 
@@ -26,21 +26,22 @@ export const InputOptions: FC<IProps> = ({value, onChange}) => {
     <>
       <Field title={l10n('title')}>
         <Input
-          defaultValue={value.title}
+          autoFocus={true}
+          value={value.title}
           placeholder={l10n('enter.title')}
           onChange={handleChange('title')}
         />
       </Field>
       <Field title={l10n('description')}>
         <Input
-          defaultValue={value.text}
+          value={value.text}
           placeholder={l10n('description')}
           onChange={handleChange('text')}
         />
       </Field>
       <Field title={l10n('placeholder')}>
         <Input
-          defaultValue={value.placeholder}
+          value={value.placeholder}
           placeholder={l10n('placeholder')}
           onChange={handleChange('placeholder')}
         />

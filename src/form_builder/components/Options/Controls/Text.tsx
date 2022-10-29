@@ -21,7 +21,12 @@ export const TextOptions: FC<IProps> = ({value, onChange}) => {
 
   return (
     <Field title={l10n('text')}>
-      <Input defaultValue={value} placeholder={l10n('enter.text')} onChange={onChangeInput} />
+      <Input
+        autoFocus={true}
+        value={value}
+        placeholder={l10n('enter.text')}
+        onChange={onChangeInput}
+      />
     </Field>
   );
 };

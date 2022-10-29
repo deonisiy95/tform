@@ -28,14 +28,14 @@ export const SettingsControl: FC<IProps> = ({control, onChange, onUp, onDown, on
       default:
         return null;
     }
-  }, [control]);
+  }, [control.value]);
 
   const upHandler = useCallback(() => onUp(index), [index]);
   const downHandler = useCallback(() => onDown(index), [index]);
   const deleteHandler = useCallback(() => onDelete(index), [index]);
 
   return (
-    <div className={style.options}>
+    <div className={style.options} key={index}>
       {controlOptions}
       <ActionsButtons onUp={upHandler} onDown={downHandler} onDelete={deleteHandler} />
     </div>

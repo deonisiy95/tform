@@ -21,7 +21,12 @@ export const TitleOptions: FC<IProps> = ({value, onChange}) => {
 
   return (
     <Field title={l10n('title')}>
-      <Input defaultValue={value} placeholder={l10n('enter.title')} onChange={onChangeInput} />
+      <Input
+        autoFocus={true}
+        value={value}
+        placeholder={l10n('enter.title')}
+        onChange={onChangeInput}
+      />
     </Field>
   );
 };
