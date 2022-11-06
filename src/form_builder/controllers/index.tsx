@@ -5,7 +5,7 @@ import {Form} from 'src/form_builder/components/Form';
 import {SettingsControl} from 'src/form_builder/components/Options';
 import {initControl} from 'src/form_builder/components/Menu';
 
-const menuItems: TTypeControl[] = ['input', 'title', 'text'];
+const menuItems: TTypeControl[] = ['input', 'title', 'text', 'checkbox'];
 
 export const FormBuilderController: FC = () => {
   const [active, setActive] = useState(0);
@@ -23,7 +23,8 @@ export const FormBuilderController: FC = () => {
       value: {
         title: 'Input vlaue',
         text: 'Input text',
-        placeholder: 'plasad'
+        placeholder: 'plasad',
+        is_require: true,
       }
     }
   ]);

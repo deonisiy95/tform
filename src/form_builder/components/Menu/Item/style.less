@@ -1,4 +1,5 @@
 @import '~styles/colors';
+@import '~styles/mixins.less';
 
 :local {
   .item {
@@ -9,15 +10,20 @@
     justify-content: space-between;
     border-radius: 6px;
 
+    & > span {
+      .text-overflow-ellipsis();
+    }
+
     &:hover {
       background-color: @grayscale-15;
       & > div {
-        display: block;
+        visibility: visible;
       }
     }
 
     div {
-      display: none;
+      visibility: hidden;
+      margin-left: 8px;
     }
   }
 }

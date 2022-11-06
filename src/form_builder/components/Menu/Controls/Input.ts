@@ -5,6 +5,7 @@ export const initInputControl = (): IInputControl => ({
   value: {
     title: l10n('enter.title'),
     text: l10n('enter.text'),
-    placeholder: l10n('enter.placeholder')
+    placeholder: l10n('enter.placeholder'),
+    is_require: false,
   }
 });

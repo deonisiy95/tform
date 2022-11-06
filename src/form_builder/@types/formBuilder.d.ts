@@ -1,8 +1,8 @@
 export type TForm = Array<TControl>;
 
-export type TTypeControl = 'input' | 'text' | 'title';
+export type TTypeControl = 'input' | 'text' | 'title' | 'checkbox';
 
-export type TControl = ITextControl | ITitleControl | IInputControl;
+export type TControl = ITextControl | ITitleControl | IInputControl | ICheckBoxControl;
 
 export interface ITextControl {
   type: 'text';
@@ -20,5 +20,14 @@ export interface IInputControl {
     title: string;
     text: string;
     placeholder: string;
+    is_require: boolean;
+  };
+}
+
+export interface ICheckBoxControl {
+  type: 'checkbox';
+  value: {
+    text: string;
+    is_require: boolean;
   };
 }
