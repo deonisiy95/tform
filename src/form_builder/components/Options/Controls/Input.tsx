@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import Input from 'UI/Input';
 import Field from 'UI/Field';
 import {TControl, IInputControl} from 'src/form_builder/@types/formBuilder';
+import {useFieldChange} from 'src/form_builder/hooks/useFieldChange';
 
 interface IProps {
   value: IInputControl['value'];
@@ -9,18 +10,9 @@ interface IProps {
 }
 
 export const InputOptions: FC<IProps> = ({value, onChange}) => {
-  const handleChange = (type: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value?.trim();
-
-    if (newValue === value[type]) {
-      return;
-    }
-
-    onChange({
-      ...value,
-      [type]: newValue
-    });
-  };
+  const handleChangeTitle = useFieldChange('title', value, onChange);
+  const handleChangeText = useFieldChange('text', value, onChange);
+  const handleChangePlaceholder = useFieldChange('placeholder', value, onChange);
 
   return (
     <>
@@ -29,21 +21,17 @@ export const InputOptions: FC<IProps> = ({value, onChange}) => {
           autoFocus={true}
           value={value.title}
           placeholder={l10n('enter.title')}
-          onChange={handleChange('title')}
+          onChange={handleChangeTitle}
         />
       </Field>
       <Field title={l10n('description')}>
-        <Input
-          value={value.text}
-          placeholder={l10n('description')}
-          onChange={handleChange('text')}
-        />
+        <Input value={value.text} placeholder={l10n('description')} onChange={handleChangeText} />
       </Field>
       <Field title={l10n('placeholder')}>
         <Input
           value={value.placeholder}
           placeholder={l10n('placeholder')}
-          onChange={handleChange('placeholder')}
+          onChange={handleChangePlaceholder}
         />
       </Field>
     </>

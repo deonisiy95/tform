@@ -6,6 +6,7 @@ import {InputOptions} from './Controls/Input';
 import {ActionsButtons} from './ActionsButtons';
 
 import style from './style.less';
+import {CheckBoxOptions} from 'src/form_builder/components/Options/Controls/Checkbox';
 
 interface IProps {
   index: number;
@@ -25,6 +26,8 @@ export const SettingsControl: FC<IProps> = ({control, onChange, onUp, onDown, on
         return <TitleOptions value={control.value} onChange={onChange} />;
       case 'input':
         return <InputOptions value={control.value} onChange={onChange} />;
+      case 'checkbox':
+        return <CheckBoxOptions value={control.value} onChange={onChange} />;
       default:
         return null;
     }

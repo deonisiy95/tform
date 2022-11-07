@@ -48,36 +48,44 @@
         }
       }
     }
+  }
 
-    &:disabled {
-      + label > .marker {
-        cursor: not-allowed;
-        background-color: @grayscale-15;
-        border-color: @grayscale-30;
+  .root {
+    display: flex;
 
-        &:after {
+    &.inactive {
+      .marker {
+        cursor: unset;
+      }
+    }
+
+    &:not(.inactive) {
+      .checkbox:disabled {
+        + label > .marker {
+          cursor: not-allowed;
+          background-color: @grayscale-15;
           border-color: @grayscale-30;
-        }
 
-        &:hover {
-          opacity: 1;
-        }
+          &:after {
+            border-color: @grayscale-30;
+          }
 
-        + label,
-        + span {
-          color: @grayscale-30;
-          opacity: 0.5;
+          &:hover {
+            opacity: 1;
+          }
+
+          + label,
+          + span {
+            color: @grayscale-30;
+            opacity: 0.5;
+          }
         }
       }
     }
   }
 
-  .root {
-    display: flex;
-    align-items: center;
-  }
-
   .label {
     flex-grow: 1;
+    padding-top: 4px;
   }
 }
