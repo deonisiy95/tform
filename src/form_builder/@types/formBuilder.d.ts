@@ -4,6 +4,8 @@ export type TTypeControl = 'input' | 'text' | 'title' | 'checkbox';
 
 export type TControl = ITextControl | ITitleControl | IInputControl | ICheckBoxControl;
 
+export type TCanRequireControl = IInputControl | ICheckBoxControl;
+
 export interface ITextControl {
   type: 'text';
   value: string;

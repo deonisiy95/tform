@@ -11,6 +11,7 @@
   "agents": "Опраторы",
   "remove": "Удалить",
   "input": "Поле ввода",
+  "is_require": "Обязательное поле",
   "enter.text": "Введите текст",
   "enter.title": "Введите заголовок",
   "enter.placeholder": "Placeholder",
