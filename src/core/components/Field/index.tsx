@@ -3,7 +3,7 @@ import style from './style.less';
 import cn from 'classnames';
 
 interface Props {
-  title: string;
+  title: string | React.ReactNode;
   text?: string;
   className?: string;
 }
