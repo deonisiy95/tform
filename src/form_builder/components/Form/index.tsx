@@ -6,6 +6,7 @@ import {TextControl} from 'src/form_builder/components/Form/Controls/Text';
 import {TitleControl} from 'src/form_builder/components/Form/Controls/Title';
 import {InputControl} from 'src/form_builder/components/Form/Controls/Input';
 import {CheckBoxControl} from 'src/form_builder/components/Form/Controls/Checkbox';
+import {SelectControl} from 'src/form_builder/components/Form/Controls/Select';
 
 interface IProps {
   form: TForm;
@@ -24,6 +25,8 @@ export const Form: FC<IProps> = ({form, active, setActive}) => {
         return <InputControl value={control.value} />;
       case 'checkbox':
         return <CheckBoxControl value={control.value} />;
+      case 'select':
+        return <SelectControl value={control.value} />;
       default:
         return null;
     }

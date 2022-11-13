@@ -3,6 +3,7 @@ import {initInputControl} from 'src/form_builder/components/Menu/Controls/Input'
 import {initTextControl} from 'src/form_builder/components/Menu/Controls/Text';
 import {initTitleControl} from 'src/form_builder/components/Menu/Controls/Title';
 import {initCheckboxControl} from 'src/form_builder/components/Menu/Controls/Checkbox';
+import {initSelectControl} from 'src/form_builder/components/Menu/Controls/Select';
 
 export const initControl = (type: TTypeControl): TControl => {
   switch (type) {
@@ -14,5 +15,7 @@ export const initControl = (type: TTypeControl): TControl => {
       return initTitleControl();
     case 'checkbox':
       return initCheckboxControl();
+    case 'select':
+      return initSelectControl();
   }
 };

@@ -5,7 +5,7 @@ import {Form} from 'src/form_builder/components/Form';
 import {SettingsControl} from 'src/form_builder/components/Options';
 import {initControl} from 'src/form_builder/components/Menu';
 
-const menuItems: TTypeControl[] = ['input', 'title', 'text', 'checkbox'];
+const menuItems: TTypeControl[] = ['input', 'title', 'text', 'checkbox', 'select'];
 
 export const FormBuilderController: FC = () => {
   const [active, setActive] = useState(0);
