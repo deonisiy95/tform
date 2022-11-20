@@ -1,0 +1,41 @@
+@import '~styles/colors';
+
+:local {
+  .item {
+    display: flex;
+    height: 24px;
+
+    &:hover {
+      .icon {
+        visibility: visible;
+      }
+    }
+  }
+
+  .text {
+    font-size: 16px;
+    flex-grow: 1;
+    padding: 0 15px;
+  }
+
+  .icon {
+    visibility: hidden;
+    width: 20px;
+    height: 24px;
+    -webkit-mask-size: 10px;
+    -webkit-mask-position: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: @grayscale-100;
+    }
+  }
+
+  .add {
+    margin-top: 16px;
+
+    button {
+      padding: 0.2rem 1.25rem;
+    }
+  }
+}

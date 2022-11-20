@@ -5,8 +5,9 @@ import cn from 'classnames';
 interface IProps {
   type: string;
   className?: string;
+  onClick?: () => void;
 }
 
-export default function Icon({type, className}: IProps) {
-  return <div className={cn(style.icon, style[type], className)} />;
+export default function Icon({type, className, onClick}: IProps) {
+  return <div className={cn(style.icon, style[type], className)} onClick={onClick} />;
 }

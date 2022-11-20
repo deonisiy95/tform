@@ -7,6 +7,7 @@ import {ActionsButtons} from './ActionsButtons';
 
 import style from './style.less';
 import {CheckBoxOptions} from 'src/form_builder/components/Options/Controls/Checkbox';
+import {SelectOptions} from 'src/form_builder/components/Options/Controls/Select';
 import Checkbox from 'UI/Checkbox';
 
 const CAN_REQUIRE_CONTROL = ['input', 'checkbox'];
@@ -31,6 +32,8 @@ export const SettingsControl: FC<IProps> = ({control, onChange, onUp, onDown, on
         return <InputOptions value={control.value} onChange={onChange} />;
       case 'checkbox':
         return <CheckBoxOptions value={control.value} onChange={onChange} />;
+      case 'select':
+        return <SelectOptions value={control.value} onChange={onChange} />;
       default:
         return null;
     }
