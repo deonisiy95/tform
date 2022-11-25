@@ -3,7 +3,7 @@
 :local {
   .container {
     border-radius: 6px;
-    padding: 12px;
+    padding: 8px 12px;
     border: 1px solid transparent;
     min-height: 21px;
     position: relative;
@@ -20,6 +20,17 @@
 
     &.active {
       border-color: @jade-70;
+    }
+
+    &.error:before {
+      content: '';
+      border: 1px solid @red-50;
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      border-radius: 6px;
     }
   }
 }

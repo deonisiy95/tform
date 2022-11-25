@@ -24,7 +24,8 @@ export const FormBuilderController: FC = () => {
         title: 'Input vlaue',
         text: 'Input text',
         placeholder: 'plasad',
-        is_require: true
+        is_require: true,
+        is_multiline: false
       }
     }
   ]);

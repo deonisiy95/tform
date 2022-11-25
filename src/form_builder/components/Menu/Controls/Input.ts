@@ -7,5 +7,6 @@ export const initInputControl = (): IInputControl => ({
     text: l10n('enter.text'),
     placeholder: l10n('enter.placeholder'),
     is_require: false,
+    is_multiline: false,
   }
 });

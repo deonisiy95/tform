@@ -3,6 +3,7 @@ import style from './style.less';
 import Icon from 'UI/Icon';
 import Input from 'UI/Input';
 import Button from 'UI/Button';
+import cn from 'classnames';
 
 interface IProps {
   options: string[];
@@ -48,24 +49,26 @@ export const SelectOptionsList: FC<IProps> = ({options, onChange}) => {
   };
 
   return (
-    <div className={style.container}>
-      {options.map((item, index) =>
-        editingItem !== index ? (
-          <div className={style.item} key={item}>
-            <div className={style.text}>{item}</div>
-            <Icon type={'pen'} className={style.icon} onClick={() => setEditingItem(index)} />
-            <Icon type={'cross'} className={style.icon} onClick={deleteOption(index)} />
-          </div>
-        ) : (
-          <Input
-            defaultValue={item}
-            onEnter={editOption(index)}
-            onBlur={editOption(index)}
-            inline={true}
-            autoFocus={true}
-          />
-        )
-      )}
+    <div>
+      <div className={cn(style.list, 'scroll')}>
+        {options.map((item, index) =>
+          editingItem !== index ? (
+            <div className={style.item} key={index}>
+              <div className={style.text}>{item}</div>
+              <Icon type={'pen'} className={style.icon} onClick={() => setEditingItem(index)} />
+              <Icon type={'cross'} className={style.icon} onClick={deleteOption(index)} />
+            </div>
+          ) : (
+            <Input
+              defaultValue={item}
+              onEnter={editOption(index)}
+              onBlur={editOption(index)}
+              inline={true}
+              autoFocus={true}
+            />
+          )
+        )}
+      </div>
       {creating ? (
         <Input onEnter={createOption} onBlur={createOption} inline={true} autoFocus={true} />
       ) : (

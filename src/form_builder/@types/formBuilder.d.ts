@@ -28,6 +28,7 @@ export interface IInputControl {
     text: string;
     placeholder: string;
     is_require: boolean;
+    is_multiline: boolean;
   };
 }
 

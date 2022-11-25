@@ -20,7 +20,11 @@ export const InputControl: FC<IProps> = ({value}) => {
         }
         text={value.text}
       >
-        <div className={style.input}>{value.placeholder}</div>
+        {value.is_multiline ? (
+          <textarea disabled={true} className={style.textarea} placeholder={value.placeholder} />
+        ) : (
+          <div className={style.input}>{value.placeholder}</div>
+        )}
       </Field>
     </div>
   );
