@@ -19,9 +19,18 @@ interface IProps {
   onUp: (index: number) => void;
   onDown: (index: number) => void;
   onDelete: (index: number) => void;
+  disabledControls?: boolean;
 }
 
-export const SettingsControl: FC<IProps> = ({control, onChange, onUp, onDown, onDelete, index}) => {
+export const SettingsControl: FC<IProps> = ({
+  control,
+  onChange,
+  onUp,
+  onDown,
+  onDelete,
+  index,
+  disabledControls
+}) => {
   const controlOptions = useMemo(() => {
     switch (control.type) {
       case 'text':
@@ -73,7 +82,12 @@ export const SettingsControl: FC<IProps> = ({control, onChange, onUp, onDown, on
           {l10n('is_require')}
         </Checkbox>
       ) : null}
-      <ActionsButtons onUp={upHandler} onDown={downHandler} onDelete={deleteHandler} />
+      <ActionsButtons
+        onUp={upHandler}
+        onDown={downHandler}
+        onDelete={deleteHandler}
+        disabled={disabledControls}
+      />
     </div>
   );
 };

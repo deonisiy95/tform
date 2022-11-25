@@ -5,6 +5,7 @@ import style from './style.less';
 import useIcon from 'src/core/hooks/useIcon';
 import {Provider} from 'react-redux';
 import store from 'src/store';
+import {ErrorBoundary} from 'src/core/controllers/ErrorBoundary';
 
 export interface IModalProps {
   close: VoidFunction;
@@ -57,7 +58,11 @@ const ModalContent: FC<IModalProps> = ({
     <div className={overlayClass}>
       <div className={style.background} onClick={onOverlayClick} ref={backgroundRef} />
       <div className={containerClassName}>
-        <div className={style.content}>{children}</div>
+        <div className={style.content}>
+          <ErrorBoundary>
+            {children}
+          </ErrorBoundary>
+        </div>
         <div className={cn(style.close, closeIcon.style)} onClick={onCloseCallback} />
       </div>
     </div>

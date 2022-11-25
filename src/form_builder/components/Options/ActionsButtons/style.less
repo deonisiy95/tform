@@ -34,5 +34,13 @@
         border-right: 1px solid @grayscale-30;
       }
     }
+
+    &.disabled {
+      cursor: not-allowed;
+
+      & > .button {
+        pointer-events: none;
+      }
+    }
   }
 }

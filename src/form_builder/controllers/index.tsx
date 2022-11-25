@@ -108,6 +108,7 @@ export const FormBuilderController: FC = () => {
         onUp={onUp}
         onDown={onDown}
         onDelete={onDelete}
+        disabledControls={form.length === 1}
       />
     );
   }, [active, form, onChange, onUp, onDown, onDelete]);

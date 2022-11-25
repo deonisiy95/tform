@@ -9,6 +9,7 @@ import SignUp from 'src/auth/controllers/SignUp';
 import DashBoard from 'src/dashboard/controllers';
 import SplashScreen from 'src/app/components/SplashScreen';
 import Widgets from 'src/widgets/controllers';
+import {ErrorBoundary} from 'src/core/controllers/ErrorBoundary';
 
 function Basis() {
   const isAuth = useSelector(selectIsAuth);
@@ -24,12 +25,14 @@ function Basis() {
 
   return (
     <App>
-      <PrivateRoute path='/dashboard'>
-        <DashBoard />
-      </PrivateRoute>
-      <PrivateRoute path='/widgets'>
-        <Widgets />
-      </PrivateRoute>
+      <ErrorBoundary>
+        <PrivateRoute path='/dashboard'>
+          <DashBoard />
+        </PrivateRoute>
+        <PrivateRoute path='/widgets'>
+          <Widgets />
+        </PrivateRoute>
+      </ErrorBoundary>
     </App>
   );
 }
