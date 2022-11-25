@@ -9,7 +9,7 @@ const menuItems: TTypeControl[] = ['input', 'title', 'text', 'checkbox', 'select
 
 export const FormBuilderController: FC = () => {
   const [active, setActive] = useState(0);
-  const [form, setForm] = useState<TForm>([
+  const [form, setForm] = useState<TForm>(() => [
     {
       type: 'title',
       value: 'Tile asd'
@@ -24,7 +24,7 @@ export const FormBuilderController: FC = () => {
         title: 'Input vlaue',
         text: 'Input text',
         placeholder: 'plasad',
-        is_require: true,
+        is_require: true
       }
     }
   ]);
@@ -90,7 +90,7 @@ export const FormBuilderController: FC = () => {
 
       setForm(list);
     },
-    [form]
+    [form, active]
   );
 
   const formComponent = useMemo(() => <Form form={form} active={active} setActive={setActive} />, [
@@ -109,7 +109,7 @@ export const FormBuilderController: FC = () => {
         onDelete={onDelete}
       />
     );
-  }, [active, form]);
+  }, [active, form, onChange, onUp, onDown, onDelete]);
 
   const onAdd = useCallback(
     (type: TTypeControl) => {

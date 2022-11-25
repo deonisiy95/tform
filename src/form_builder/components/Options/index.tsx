@@ -37,11 +37,11 @@ export const SettingsControl: FC<IProps> = ({control, onChange, onUp, onDown, on
       default:
         return null;
     }
-  }, [control.value]);
+  }, [control.value, control.type, onChange]);
 
-  const upHandler = useCallback(() => onUp(index), [index]);
-  const downHandler = useCallback(() => onDown(index), [index]);
-  const deleteHandler = useCallback(() => onDelete(index), [index]);
+  const upHandler = useCallback(() => onUp(index), [index, onUp]);
+  const downHandler = useCallback(() => onDown(index), [index, onDown]);
+  const deleteHandler = useCallback(() => onDelete(index), [index, onDelete]);
 
   const showRequireOption =
     CAN_REQUIRE_CONTROL.includes(control.type) &&
