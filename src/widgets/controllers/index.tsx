@@ -10,8 +10,6 @@ export default function WidgetsController() {
   const widgets = useSelector(selectWidgets);
   const loading = useSelector(selectWidgetsLoading);
   const openSettings = useCallback((id: string) => {
-    console.log(id);
-
     Modal(<SettingsWidget widget_id={id}/>);
   }, []);
 

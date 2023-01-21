@@ -17,6 +17,16 @@ export const getWidgets = createAsyncThunk('widgets/get', async () => {
   }
 });
 
+export const updateWidget = createAsyncThunk('widgets/update', async (data: Partial<IWidget>) => {
+  try {
+    await widgetsApiActions.update(data);
+
+    return data;
+  } catch (error) {
+    console.log('Error update widget', error);
+  }
+});
+
 export const widgetsSlice = createSlice({
   name: 'widgets',
   initialState: initialState,
@@ -36,6 +46,13 @@ export const widgetsSlice = createSlice({
       .addCase(getWidgets.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
+      })
+      .addCase(updateWidget.fulfilled, (state, action) => {
+        const index = state.data.findIndex(item => item.widgetId === action.payload.widgetId);
+
+        if (index >= 0) {
+          state.data[index] = {...state.data[index], ...action.payload};
+        }
       });
   }
 });

@@ -15,7 +15,14 @@ export const SettingsWidget: FC<IProps> = ({widget_id}) => {
   return (
     <SettingsWidgetComponent
       name={widget?.name}
-      options={<Options name={widget.name} token={widget.token} agents={widget.agents} />}
+      options={
+        <Options
+          widgetId={widget.widgetId}
+          name={widget.name}
+          token={widget.token}
+          agents={widget.agents}
+        />
+      }
       design={<FormBuilderController />}
     />
   );

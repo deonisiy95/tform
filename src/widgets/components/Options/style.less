@@ -2,12 +2,24 @@
   .container {
     height: calc(100% - 112px);
     padding-right: 8px;
-    width: 500px;
     margin-left: 16px;
     margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .options {
+    width: 500px;
 
     & > div {
       margin-bottom: 24px;
     }
+  }
+
+  .controls {
+    display: flex;
+    justify-content: end;
+    flex-grow: 1;
+    align-items: end;
   }
 }
