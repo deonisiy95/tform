@@ -17,13 +17,13 @@ export const SettingsWidget: FC<IProps> = ({widget_id}) => {
       name={widget?.name}
       options={
         <Options
-          widgetId={widget.widgetId}
-          name={widget.name}
-          token={widget.token}
-          agents={widget.agents}
+          widgetId={widget?.widgetId}
+          name={widget?.name}
+          token={widget?.token}
+          agents={widget?.agents}
         />
       }
-      design={<FormBuilderController />}
+      design={<FormBuilderController widgetId={widget?.widgetId}/>}
     />
   );
 };

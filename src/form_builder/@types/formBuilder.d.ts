@@ -49,3 +49,8 @@ export interface ICheckBoxControl {
     is_require: boolean;
   };
 }
+
+export interface IFormData {
+  widgetId: string;
+  config: string;
+}

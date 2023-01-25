@@ -4,10 +4,15 @@ import {TControl, TForm, TTypeControl} from 'src/form_builder/@types/formBuilder
 import {Form} from 'src/form_builder/components/Form';
 import {SettingsControl} from 'src/form_builder/components/Options';
 import {initControl} from 'src/form_builder/components/Menu';
+import {formApiActions} from 'src/form_builder/actions/api';
 
 const menuItems: TTypeControl[] = ['input', 'title', 'text', 'checkbox', 'select'];
 
-export const FormBuilderController: FC = () => {
+interface IProps {
+  widgetId: string;
+}
+
+export const FormBuilderController: FC<IProps> = ({widgetId}) => {
   const [active, setActive] = useState(0);
   const [form, setForm] = useState<TForm>(() => [
     {
@@ -126,12 +131,22 @@ export const FormBuilderController: FC = () => {
     [form]
   );
 
+  const onSaveForm = useCallback(() => {
+    try {
+      const config = JSON.stringify(form);
+      return formApiActions.update({widgetId, config});
+    } catch (error) {
+      console.error('Error save form', error);
+    }
+  }, [widgetId, form]);
+
   return (
     <FormBuilder
       items={menuItems}
       form={formComponent}
       options={optionsComponent}
       onAddControl={onAdd}
+      onSave={onSaveForm}
     />
   );
 };
