@@ -9,7 +9,7 @@ export default function useInput(
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      const newValue = event.target.value?.trim();
+      const newValue = event.target.value;
 
       if (newValue !== value) {
         setValue(newValue);

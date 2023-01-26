@@ -1,10 +1,11 @@
-import React, {FC, useMemo, useState, useCallback} from 'react';
+import React, {FC, useMemo, useState, useCallback, useEffect} from 'react';
 import {FormBuilder} from 'src/form_builder/components';
 import {TControl, TForm, TTypeControl} from 'src/form_builder/@types/formBuilder';
 import {Form} from 'src/form_builder/components/Form';
 import {SettingsControl} from 'src/form_builder/components/Options';
 import {initControl} from 'src/form_builder/components/Menu';
 import {formApiActions} from 'src/form_builder/actions/api';
+import {asyncJsonParse} from 'src/core/utils/asyncParse';
 
 const menuItems: TTypeControl[] = ['input', 'title', 'text', 'checkbox', 'select'];
 
@@ -14,26 +15,15 @@ interface IProps {
 
 export const FormBuilderController: FC<IProps> = ({widgetId}) => {
   const [active, setActive] = useState(0);
-  const [form, setForm] = useState<TForm>(() => [
-    {
-      type: 'title',
-      value: 'Tile asd'
-    },
-    {
-      type: 'text',
-      value: 'Text vlaue'
-    },
-    {
-      type: 'input',
-      value: {
-        title: 'Input vlaue',
-        text: 'Input text',
-        placeholder: 'plasad',
-        is_require: true,
-        is_multiline: false
-      }
-    }
-  ]);
+  const [form, setForm] = useState<TForm>([]);
+
+  useEffect(() => {
+    formApiActions
+      .get(widgetId)
+      .then(formData => asyncJsonParse(formData?.config || ''))
+      .then(form => setForm(form as TForm))
+      .catch(error => console.error('Error get form data', widgetId, error));
+  }, [widgetId]);
 
   const onChange = useCallback(
     (value: TControl['value']) => {

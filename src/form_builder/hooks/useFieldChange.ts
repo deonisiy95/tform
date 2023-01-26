@@ -7,7 +7,7 @@ export const useFieldChange = <T extends {}>(
 ) => {
   return useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      const newValue = event.target.value?.trim();
+      const newValue = event.target.value;
 
       if (newValue === value[type]) {
         return;

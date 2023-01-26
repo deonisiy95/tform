@@ -10,7 +10,7 @@ interface IProps {
 
 export const TitleOptions: FC<IProps> = ({value, onChange}) => {
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value?.trim();
+    const newValue = event.target.value;
 
     if (newValue === value) {
       return;

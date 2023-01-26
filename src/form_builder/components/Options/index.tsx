@@ -14,7 +14,7 @@ const CAN_REQUIRE_CONTROL = ['input', 'checkbox'];
 
 interface IProps {
   index: number;
-  control: TControl;
+  control?: TControl;
   onChange: (value: TControl['value']) => void;
   onUp: (index: number) => void;
   onDown: (index: number) => void;
@@ -32,28 +32,28 @@ export const SettingsControl: FC<IProps> = ({
   disabledControls
 }) => {
   const controlOptions = useMemo(() => {
-    switch (control.type) {
+    switch (control?.type) {
       case 'text':
-        return <TextOptions value={control.value} onChange={onChange} />;
+        return <TextOptions value={control?.value} onChange={onChange} />;
       case 'title':
-        return <TitleOptions value={control.value} onChange={onChange} />;
+        return <TitleOptions value={control?.value} onChange={onChange} />;
       case 'input':
-        return <InputOptions value={control.value} onChange={onChange} />;
+        return <InputOptions value={control?.value} onChange={onChange} />;
       case 'checkbox':
-        return <CheckBoxOptions value={control.value} onChange={onChange} />;
+        return <CheckBoxOptions value={control?.value} onChange={onChange} />;
       case 'select':
-        return <SelectOptions value={control.value} onChange={onChange} />;
+        return <SelectOptions value={control?.value} onChange={onChange} />;
       default:
         return null;
     }
-  }, [control.value, control.type, onChange]);
+  }, [control?.value, control?.type, onChange]);
 
   const upHandler = useCallback(() => onUp(index), [index, onUp]);
   const downHandler = useCallback(() => onDown(index), [index, onDown]);
   const deleteHandler = useCallback(() => onDelete(index), [index, onDelete]);
 
   const showRequireOption =
-    CAN_REQUIRE_CONTROL.includes(control.type) &&
+    CAN_REQUIRE_CONTROL.includes(control?.type) &&
     'is_require' in (control as TCanRequireControl).value;
   const isRequire = showRequireOption && (control as TCanRequireControl).value.is_require;
 
@@ -73,6 +73,10 @@ export const SettingsControl: FC<IProps> = ({
     },
     [control, onChange]
   );
+
+  if (!control) {
+    return null;
+  }
 
   return (
     <div className={style.options} key={index}>
