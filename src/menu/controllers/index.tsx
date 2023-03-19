@@ -30,5 +30,5 @@ export default function MenuController() {
     return 'dashboard';
   }, [location]);
 
-  return <Menu activeTab={activeTab} onItemClick={onClick} />;
+  return <Menu activeTab={activeTab as TSection} onItemClick={onClick} />;
 }

@@ -4,18 +4,23 @@ import {useSelector} from 'react-redux';
 import {selectWidgets, selectWidgetsLoading} from 'src/widgets/selectors';
 import {Modal} from 'UI/Modal';
 import AddWidget from 'src/widgets/controllers/Add';
-import {SettingsWidget} from 'src/widgets/controllers/Settings';
+import {navigate} from 'src/core/scripts/navigation';
+import {Page} from 'UI/Page';
 
 export default function WidgetsController() {
   const widgets = useSelector(selectWidgets);
   const loading = useSelector(selectWidgetsLoading);
   const openSettings = useCallback((id: string) => {
-    Modal(<SettingsWidget widget_id={id}/>);
+    navigate(`/widgets/${id}`);
   }, []);
 
   const openAdd = useCallback(() => {
     const popup = Modal(<AddWidget close={() => popup.close()} />, {noPadding: true});
   }, []);
 
-  return <Widgets widgets={widgets} loading={loading} onSettings={openSettings} onAdd={openAdd} />;
+  return (
+    <Page title={l10n('widgets')}>
+      <Widgets widgets={widgets} loading={loading} onSettings={openSettings} onAdd={openAdd} />
+    </Page>
+  );
 }

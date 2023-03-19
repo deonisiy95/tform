@@ -1,19 +1,10 @@
-import React, {useMemo} from 'react';
-import {useLocation} from 'react-router-dom';
+import React, {FC} from 'react';
 import style from './style.less';
 
-const titles = {
-  '/widgets': 'Виджеты',
-  '/conversation': 'Обращения'
-};
-
-export default function Header() {
-  const location = useLocation();
-  const title = useMemo(() => titles[location.pathname] ?? '', [location]);
-
+export const Header: FC<{title: string}> = ({title}): JSX.Element => {
   return (
     <div className={style.container}>
       <div className={style.title}>{title}</div>
     </div>
   );
-}
+};

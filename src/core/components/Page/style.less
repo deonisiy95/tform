@@ -1,0 +1,21 @@
+@import '~styles/colors';
+
+:local {
+  .page {
+    flex-grow: 1;
+    min-width: 700px;
+    height: calc(100% - 86px);
+
+    & > div {
+      box-sizing: border-box;
+    }
+  }
+
+  .content {
+    background-color: @grayscale-0;
+    border-radius: 16px;
+    height: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+}

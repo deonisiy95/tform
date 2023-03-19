@@ -20,7 +20,7 @@ export default function Menu({onItemClick, activeTab}: IProps) {
           isActive={activeTab === 'dashboard'}
           title='Dashboard'
           icon='conversation'
-          onClick={onClick('conversation')}
+          onClick={onClick('dashboard')}
         />
         <MenuItem
           isActive={activeTab === 'widgets'}

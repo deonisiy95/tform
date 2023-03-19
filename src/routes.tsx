@@ -10,6 +10,7 @@ import DashBoard from 'src/dashboard/controllers';
 import SplashScreen from 'src/app/components/SplashScreen';
 import Widgets from 'src/widgets/controllers';
 import {ErrorBoundary} from 'src/core/controllers/ErrorBoundary';
+import {SettingsWidget} from 'src/widgets/controllers/Settings';
 
 function Basis() {
   const isAuth = useSelector(selectIsAuth);
@@ -29,8 +30,11 @@ function Basis() {
         <PrivateRoute path='/dashboard'>
           <DashBoard />
         </PrivateRoute>
-        <PrivateRoute path='/widgets'>
+        <PrivateRoute path='/widgets' exact>
           <Widgets />
+        </PrivateRoute>
+        <PrivateRoute path='/widgets/:id'>
+          <SettingsWidget />
         </PrivateRoute>
       </ErrorBoundary>
     </App>

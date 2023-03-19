@@ -14,7 +14,7 @@ interface IProps {
 
 export default function Widgets({widgets, loading, onSettings, onAdd}: IProps) {
   return (
-    <div className={style.container}>
+    <div>
       {!widgets || widgets.length === 0 ? (
         <EmptyBox
           page='widgets'

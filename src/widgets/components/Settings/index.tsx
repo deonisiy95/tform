@@ -9,7 +9,7 @@ interface IProps {
   design: React.ReactNode;
 }
 
-export const SettingsWidgetComponent: FC<IProps> = ({name, options, design}) => {
+export const SettingsWidgetComponent: FC<IProps> = ({options, design}) => {
   const tabs = useMemo(
     () => [
       {key: 'options', title: l10n('widget.settings.options')},
@@ -25,8 +25,7 @@ export const SettingsWidgetComponent: FC<IProps> = ({name, options, design}) => 
   }, []);
 
   return (
-    <div className={style.popup}>
-      <h2>{`${l10n('settings')} ${name}`}</h2>
+    <div className={style.container}>
       <Tabs tabs={tabs} active={activeTab} onTabClick={onTabClick} />
       {activeTab === 'options' ? options : design}
     </div>
