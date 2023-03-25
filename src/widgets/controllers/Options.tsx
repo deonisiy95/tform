@@ -9,6 +9,7 @@ import {SimpleList} from 'UI/SimpleList';
 import {OptionsComponent} from 'src/widgets/components/Options';
 import Button from 'UI/Button';
 import {updateWidget} from 'src/widgets/stores';
+import {navigate} from 'src/core/scripts/navigation';
 
 interface IProps {
   name: IWidget['name'];
@@ -36,9 +37,18 @@ export const Options: FC<IProps> = ({widgetId, token, name, agents}) => {
   }, [widgetId, newName]);
 
   return (
-    <OptionsComponent controls={
-      <Button onClick={saveSettings} size={'sm'}>{l10n('save')}</Button>
-    }>
+    <OptionsComponent
+      controls={
+        <>
+          <Button color={'light'} onClick={() => navigate('/widgets')} size={'sm'}>
+            {l10n('cancel')}
+          </Button>
+          <Button onClick={saveSettings} size={'sm'}>
+            {l10n('save')}
+          </Button>
+        </>
+      }
+    >
       <Field title={l10n('name')}>
         <Input defaultValue={name} onChange={onChange} invalid={invalid} />
       </Field>

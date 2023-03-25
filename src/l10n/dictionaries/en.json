@@ -1,5 +1,6 @@
 {
   "settings": "Settings",
+  "cancel": "Сancel",
   "widget.agents.notExist": "No assigned agents",
   "widget.stat.notExist": "Not exist stat data",
   "error_screen.title": "Oops, something went wrong",

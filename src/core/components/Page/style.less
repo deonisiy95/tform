@@ -4,7 +4,9 @@
   .page {
     flex-grow: 1;
     min-width: 700px;
-    height: calc(100% - 86px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 
     & > div {
       box-sizing: border-box;
@@ -17,5 +19,7 @@
     height: 100%;
     padding: 24px;
     box-sizing: border-box;
+    flex-grow: 1;
+    overflow: hidden;
   }
 }

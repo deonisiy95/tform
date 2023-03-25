@@ -6,6 +6,7 @@ import {SettingsControl} from 'src/form_builder/components/Options';
 import {initControl} from 'src/form_builder/components/Menu';
 import {formApiActions} from 'src/form_builder/actions/api';
 import {asyncJsonParse} from 'src/core/utils/asyncParse';
+import {navigate} from 'src/core/scripts/navigation';
 
 const menuItems: TTypeControl[] = ['input', 'title', 'text', 'checkbox', 'select'];
 
@@ -130,6 +131,10 @@ export const FormBuilderController: FC<IProps> = ({widgetId}) => {
     }
   }, [widgetId, form]);
 
+  const onCancel = useCallback(() => {
+    navigate('/widgets');
+  }, []);
+
   return (
     <FormBuilder
       items={menuItems}
@@ -137,6 +142,7 @@ export const FormBuilderController: FC<IProps> = ({widgetId}) => {
       options={optionsComponent}
       onAddControl={onAdd}
       onSave={onSaveForm}
+      onCancel={onCancel}
     />
   );
 };

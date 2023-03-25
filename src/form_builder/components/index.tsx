@@ -12,9 +12,10 @@ interface IProps {
   options: React.ReactNode;
   onAddControl: (type: TTypeControl) => void;
   onSave: () => Promise<void>;
+  onCancel: () => void;
 }
 
-export const FormBuilder: FC<IProps> = ({items, form, options, onAddControl, onSave}) => {
+export const FormBuilder: FC<IProps> = ({items, form, options, onAddControl, onSave, onCancel}) => {
   const [processing, onSaveHandler] = useProcessingButton(onSave);
 
   return (
@@ -29,6 +30,9 @@ export const FormBuilder: FC<IProps> = ({items, form, options, onAddControl, onS
         <div className={cn(style.settings, 'scroll')}>{options}</div>
       </div>
       <div className={style.controls}>
+        <Button color={'light'} onClick={onCancel} size={'sm'}>
+          {l10n('cancel')}
+        </Button>
         <Button
           className={style.buttonSave}
           size={'sm'}

@@ -2,9 +2,10 @@
 
 :local {
   .container {
-    height: calc(100% - 100px);
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    overflow-x: auto;
   }
 
   .form {
@@ -20,6 +21,7 @@
     padding-top: 12px;
     padding-right: 13px;
     justify-content: flex-end;
+    gap: 16px;
   }
 
   .menu {
@@ -28,10 +30,12 @@
     box-sizing: border-box;
   }
 
-  .content {
+  div.content {
     flex-basis: 50%;
     background-color: @grayscale-15;
     min-width: 300px;
+    padding: 0 12px;
+    overflow-x: auto;
   }
 
   .settings {
