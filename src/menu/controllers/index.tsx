@@ -21,7 +21,7 @@ export default function MenuController() {
   }, []);
   const location = useLocation();
   const activeTab = useMemo(() => {
-    const tab = (location.pathname ?? '/').slice(1);
+    const tab = (location.pathname ?? '/').split('/')[1];
 
     if (['dashboard', 'widgets'].includes(tab)) {
       return tab;

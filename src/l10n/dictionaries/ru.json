@@ -25,6 +25,7 @@
   "placeholder": "Placeholder",
   "widgets": "Виджеты",
   "conversations": "Обращения",
+  "dashboard.empty": "У вас пока нет обращений",
   "widgets.connected": "Подключенные виджеты",
   "widgets.add": "Добавить новый виджет",
   "widgets.add.step.one.text": "Для подключения вам необходимо создать Telegram бота",
