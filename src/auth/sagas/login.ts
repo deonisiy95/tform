@@ -62,8 +62,8 @@ export function* checkLogin() {
   }
 
   yield delay(TIME_SPLASH_SCREEN);
-  yield put(actions.setLoading(false));
   yield call(navigate, '/');
+  yield put(actions.setLoading(false));
   yield put(appActions.startApp());
 }
 

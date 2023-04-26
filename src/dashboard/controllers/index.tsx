@@ -5,7 +5,7 @@ import {Page} from 'UI/Page';
 export default function DashBoard() {
   return (
     <Page title={l10n('conversations')}>
-      <Dashboard />{' '}
+      <Dashboard />
     </Page>
   );
 }
