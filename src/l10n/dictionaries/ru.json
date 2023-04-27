@@ -55,5 +55,8 @@
   "widget.settings.design.control.down": "Переместить вниз",
   "widget.settings.design.control.up": "Переместить вверх",
   "error_screen.title": "Упс, что-то пошло не так",
-  "error_screen.text": "Попробуйте перейти в другой раздел или перезагрузить приложение"
+  "error_screen.text": "Попробуйте перейти в другой раздел или перезагрузить приложение",
+  "date": "Дата",
+  "message.table.header.info": "Обращение",
+  "message.table.header.widget": "Виджет"
 }

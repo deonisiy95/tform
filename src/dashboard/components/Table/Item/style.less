@@ -1,5 +1,26 @@
 @import '~styles/colors.less';
+@import '~styles/mixins';
 
 :local {
+  .row {
+    padding: 8px 12px;
+    display: flex;
 
+    &:hover {
+      background-color: @grayscale-10;
+    }
+
+    .date {
+      width: 30%;
+    }
+
+    .info {
+      width: 40%;
+      .text-overflow-ellipsis();
+    }
+
+    .widget {
+      width: 30%;
+    }
+  }
 }

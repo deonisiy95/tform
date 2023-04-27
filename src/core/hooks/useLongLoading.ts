@@ -1,8 +1,8 @@
 import {useState, useEffect, useRef} from 'react';
 
-export default function useLongLoading(initialValue: boolean) {
+export default function useLongLoading(initialValue: boolean = false, delay = 1000) {
   const [loading, setLoading] = useState(initialValue);
-  const [isTimer, setIsTimer] = useState(initialValue);
+  const [isTimer, setIsTimer] = useState(false);
   const timerRef = useRef<TimeoutId>();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function useLongLoading(initialValue: boolean) {
       timerRef.current = setTimeout(() => {
         setIsTimer(false);
         timerRef.current = null;
-      }, 2000);
+      }, delay);
     }
   }, [loading]);
 
