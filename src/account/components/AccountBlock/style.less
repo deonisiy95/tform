@@ -1,0 +1,42 @@
+@import '~styles/colors';
+@import '~styles/mixins';
+
+:local {
+  .block {
+    display: flex;
+    position: absolute;
+    top: 4px;
+    right: 24px;
+    height: 34px;
+    padding: 8px 12px;
+    max-width: 300px;
+    border-radius: 10px;
+    background-color: @grayscale-0;
+    box-shadow: rgba(149, 157, 165, 8%) 0 8px 24px;
+  }
+
+  .name {
+    .text-overflow-ellipsis();
+  }
+
+  .avatar {
+    flex-shrink: 0;
+    position: relative;
+    margin-left: 8px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(45deg, @grayscale-0, @main-element);
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      background-image: data-uri('./images/avatar.png');
+      background-repeat: no-repeat;
+      background-size: 26px;
+      background-position: center;
+    }
+  }
+}

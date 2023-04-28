@@ -14,10 +14,28 @@
     margin-top: 16px;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-gap: 8px;
 
     & > div {
+      padding-top: 4px;
+      padding-bottom: 4px;
       word-break: break-word;
+      user-select: text;
+    }
+
+    & > div:nth-child(odd) {
+      border-right: 1px solid @grayscale-30;
+    }
+
+    & > div:not(:nth-last-child(-n - 2)) {
+      border-top: 1px solid @grayscale-30;
+    }
+
+    & > div:nth-child(-n + 2) {
+      border-top: unset;
+    }
+
+    & > div:nth-child(even) {
+      padding-left: 16px;
     }
   }
 }
