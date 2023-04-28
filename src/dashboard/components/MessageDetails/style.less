@@ -1,0 +1,23 @@
+@import '~styles/colors';
+@import '~styles/mixins';
+
+:local {
+  .messageDetails {
+    width: 600px;
+  }
+
+  .date {
+    font-size: 14px;
+  }
+
+  .messageInfo {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 8px;
+
+    & > div {
+      word-break: break-word;
+    }
+  }
+}

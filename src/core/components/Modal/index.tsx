@@ -33,10 +33,10 @@ const ModalContent: FC<IModalProps> = ({
     [overlayClassName]: !!overlayClassName
   });
 
-  const containerClassName = cn(style.container, {
+  const containerClassName = cn(style.container, 'scroll', {
     [style.fullScreen]: Boolean(fullScreen),
     [className]: Boolean(className),
-    [style.noPadding]: Boolean(noPadding)
+    [style.noPadding]: Boolean(noPadding),
   });
 
   const onCloseCallback = useCallback(() => {

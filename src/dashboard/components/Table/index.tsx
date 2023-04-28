@@ -1,16 +1,29 @@
-import React, {FC} from 'react';
+import React, {FC, useCallback} from 'react';
 import style from './style.less';
 import {TableRow} from 'src/dashboard/components/Table/Item';
 import EmptyBox from 'src/app/components/EmptyBox';
-import {getTextMessage} from 'src/dashboard/utils/getTextMessage';
+import {getShortTextMessage} from 'src/dashboard/utils/getTextMessage';
 
 interface IProps {
   isLoading: boolean;
   messages: IMessage[];
+  onClickMessage: (message: IMessage) => void;
   getWidgetName: (id: string) => string;
 }
 
-export const TableMessagesComponent: FC<IProps> = ({messages, isLoading, getWidgetName}) => {
+export const TableMessagesComponent: FC<IProps> = ({
+  messages,
+  isLoading,
+  getWidgetName,
+  onClickMessage
+}) => {
+  const onClick = useCallback(
+    (message: IMessage) => () => {
+      onClickMessage(message);
+    },
+    [onClickMessage]
+  );
+
   if (isLoading || messages.length === 0) {
     return (
       <EmptyBox
@@ -33,9 +46,10 @@ export const TableMessagesComponent: FC<IProps> = ({messages, isLoading, getWidg
       {messages.map(message => (
         <TableRow
           key={message.createdAt}
-          message={getTextMessage(message)}
+          message={getShortTextMessage(message)}
           widgetName={getWidgetName(message.widgetId)}
           createdAt={message.createdAt}
+          onClick={onClick(message)}
         />
       ))}
     </div>
