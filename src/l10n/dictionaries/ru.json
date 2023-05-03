@@ -59,5 +59,7 @@
   "date": "Дата",
   "message.table.header.info": "Обращение",
   "message.table.header.widget": "Виджет",
-  "message.details.title": "Обращение"
+  "message.details.title": "Обращение",
+  "dashboard.title": "Полученные обращения",
+  "dashboard.count": "Всего обращений"
 }
