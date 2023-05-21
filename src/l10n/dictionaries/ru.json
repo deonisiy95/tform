@@ -61,5 +61,7 @@
   "message.table.header.widget": "Виджет",
   "message.details.title": "Обращение",
   "dashboard.title": "Полученные обращения",
-  "dashboard.count": "Всего обращений"
+  "dashboard.total": "Всего обращений",
+  "dashboard.update.text": "Данные обновлены 2 минуты назад",
+  "dashboard.update.button": "Обновить"
 }

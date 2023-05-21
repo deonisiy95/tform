@@ -5,6 +5,7 @@ import EmptyBox from 'src/app/components/EmptyBox';
 import useLongLoading from 'src/core/hooks/useLongLoading';
 import Api from 'src/core/scripts/api';
 import {DashboardHeader} from 'src/dashboard/components/Header';
+import {Widgets} from 'src/dashboard/components/Widgets';
 
 export default function Dashboard() {
   const [messages, setMessages] = useState([]);
@@ -29,10 +30,11 @@ export default function Dashboard() {
           loading={isLoading}
         />
       ) : (
-        <>
-          <DashboardHeader total={20} />
+        <div className={style.content}>
+          <DashboardHeader />
           <TableMessages messages={messages} />
-        </>
+          <Widgets total={20} />
+        </div>
       )}
     </div>
   );
