@@ -1,3 +1,6 @@
+import 'moment/locale/ru';
+import moment from 'moment';
+
 class Localization {
   private readonly dictionaries;
   private locale;
@@ -9,10 +12,12 @@ class Localization {
     };
 
     this.locale = 'ru';
+    moment.locale('ru');
   }
 
   public setLocale(locale: string): void {
     this.locale = locale;
+    moment.locale(locale);
   }
 
   public translate(key: string): string {

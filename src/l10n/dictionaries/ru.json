@@ -62,6 +62,6 @@
   "message.details.title": "Обращение",
   "dashboard.title": "Полученные обращения",
   "dashboard.total": "Всего обращений",
-  "dashboard.update.text": "Данные обновлены 2 минуты назад",
+  "dashboard.update.text": "Данные обновлены",
   "dashboard.update.button": "Обновить"
 }
