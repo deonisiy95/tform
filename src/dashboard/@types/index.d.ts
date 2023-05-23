@@ -10,4 +10,5 @@ type IMessage = {
 
 type IGetMessagesResponse = {
   messages: Array<IMessage>;
+  total: number;
 };

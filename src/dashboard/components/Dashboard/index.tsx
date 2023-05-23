@@ -9,12 +9,16 @@ import {Widgets} from 'src/dashboard/components/Widgets';
 
 export default function Dashboard() {
   const [messages, setMessages] = useState([]);
+  const [total, setTotal] = useState(0);
   const {isLoading, setLoading} = useLongLoading(true);
   const empty = isLoading || messages.length === 0;
 
   useEffect(() => {
     Api.send<IGetMessagesResponse>('widgets/messages')
-      .then(result => setMessages(result.messages ?? []))
+      .then(result => {
+        setMessages(result.messages ?? []);
+        setTotal(result.total ?? 0);
+      })
       .catch(error => console.log('Error get messages', error))
       .finally(() => setLoading(false));
   }, []);
@@ -33,7 +37,7 @@ export default function Dashboard() {
         <div className={style.content}>
           <DashboardHeader />
           <TableMessages messages={messages} />
-          <Widgets total={20} />
+          <Widgets total={total} />
         </div>
       )}
     </div>
