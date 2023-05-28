@@ -55,7 +55,7 @@ export const UpdateWidget: FC<IProps> = ({onUpdate}) => {
     <div className={style.widget}>
       <Icon type={'time'} className={style.widgetIcon} />
       <div className={style.widgetText}>{lastUpdateText}</div>
-      <Button onClick={updateData} size={'sm'}>
+      <Button onClick={updateData} size={'xsm'}>
         {l10n('dashboard.update.button')}
       </Button>
     </div>

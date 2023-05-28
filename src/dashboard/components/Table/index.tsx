@@ -2,17 +2,21 @@ import React, {FC, useCallback} from 'react';
 import {TableRow} from 'src/dashboard/components/Table/Item';
 import {getShortTextMessage} from 'src/dashboard/utils/getTextMessage';
 import style from './style.less';
+import cn from 'classnames';
+import Loader from 'UI/Loader';
 
 interface IProps {
   messages: IMessage[];
   onClickMessage: (message: IMessage) => void;
   getWidgetName: (id: string) => string;
+  loading?: boolean;
 }
 
 export const TableMessagesComponent: FC<IProps> = ({
   messages,
   getWidgetName,
-  onClickMessage
+  onClickMessage,
+  loading
 }) => {
   const onClick = useCallback(
     (message: IMessage) => () => {
@@ -22,7 +26,8 @@ export const TableMessagesComponent: FC<IProps> = ({
   );
 
   return (
-    <div className={style.table}>
+    <div className={cn(style.table, {[style.loading]: loading})}>
+      {loading ? <Loader className={style.loader}/> : null}
       <div className={style.header}>
         <div>{l10n('date')}</div>
         <div>{l10n('message.table.header.info')}</div>

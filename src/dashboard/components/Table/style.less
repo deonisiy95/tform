@@ -5,14 +5,27 @@
     border-radius: 10px;
     border: 1px solid @grayscale-30;
     font-size: 18px;
+    position: relative;
+
+    .loader {
+      position: absolute;
+      top: calc(50% - 80px);
+      right: 50%;
+    }
+  }
+
+  .loading {
+    pointer-events: none;
+    opacity: 0.5;
   }
 
   .header {
-    padding: 8px 12px;
+    padding: 12px 16px;
     display: flex;
     background-color: @grayscale-15;
     border-radius: 10px 10px 0 0;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 400;
 
     & > div:nth-child(1) {
       width: 30%;

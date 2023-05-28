@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 interface Props {
   onClick: Function;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xsm' | 'sm' | 'md' | 'lg';
   color?: 'primary' | 'light' | 'azure';
   className?: string;
   isLoad?: boolean;

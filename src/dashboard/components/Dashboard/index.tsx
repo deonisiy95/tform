@@ -36,8 +36,8 @@ export default function Dashboard() {
       ) : (
         <div className={style.content}>
           <DashboardHeader />
-          <TableMessages messages={messages} />
           <Widgets total={total} />
+          <TableMessages messages={messages} />
         </div>
       )}
     </div>
