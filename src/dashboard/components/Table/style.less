@@ -1,9 +1,20 @@
 @import '~styles/colors';
 
 :local {
+  .tableWrapper {
+    flex-grow: 1;
+    overflow: hidden;
+    border: 1px solid @grayscale-30;
+    border-radius: 10px;
+  }
+
+  .tableContent {
+    height: calc(100% - 46px);
+    padding-right: 8px;
+  }
+
   .table {
     border-radius: 10px;
-    border: 1px solid @grayscale-30;
     font-size: 18px;
     position: relative;
 
@@ -20,7 +31,7 @@
   }
 
   .header {
-    padding: 12px 16px;
+    padding: 12px 34px 12px 16px;
     display: flex;
     background-color: @grayscale-15;
     border-radius: 10px 10px 0 0;

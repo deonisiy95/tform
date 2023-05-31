@@ -1,0 +1,65 @@
+@import '~styles/colors';
+
+:local {
+  .pagination {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .pages {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+
+    li {
+      cursor: pointer;
+      min-width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .active {
+      font-weight: bold;
+    }
+
+    .rest {
+      cursor: default;
+    }
+
+    .button {
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      background: @grayscale-50;
+      background-size: 12px;
+      &:hover {
+        background-color: @grayscale-60;
+      }
+
+      &:active {
+        background-color: @grayscale-70;
+      }
+
+      &.disabled {
+        background-color: @grayscale-30;
+        cursor: default;
+      }
+    }
+
+    .prevPage {
+      margin-right: 8px;
+    }
+
+    .nextPage {
+      margin-left: 8px;
+    }
+  }
+}

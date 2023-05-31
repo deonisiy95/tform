@@ -3,6 +3,7 @@ import {TableMessagesComponent} from 'src/dashboard/components/Table';
 import {useWidgetName} from 'src/widgets/hooks/useWidgetName';
 import {Modal} from 'UI/Modal';
 import {MessageDetails} from 'src/dashboard/components/MessageDetails';
+import {Pagination} from 'UI/Pagination';
 
 interface IProps {
   messages: IMessage[];
@@ -16,10 +17,13 @@ export const TableMessages: FC<IProps> = ({messages}) => {
   }, []);
 
   return (
-    <TableMessagesComponent
-      messages={messages}
-      getWidgetName={getWidgetName}
-      onClickMessage={onClickMessage}
-    />
+    <>
+      <TableMessagesComponent
+        messages={messages}
+        getWidgetName={getWidgetName}
+        onClickMessage={onClickMessage}
+      />
+      <Pagination count={50} onChange={(page) => console.log('asd', page)} />
+    </>
   );
 };
