@@ -5,13 +5,15 @@ import {UpdateWidget} from 'src/dashboard/components/Widgets/Update';
 
 interface IProps {
   total: number;
+  page: number;
+  onUpdateMessageList: () => void;
 }
 
-export const Widgets: FC<IProps> = ({total}) => {
+export const Widgets: FC<IProps> = ({total, page, onUpdateMessageList}) => {
   return (
     <div className={style.widgets}>
       <TotalWidget total={total} />
-      <UpdateWidget />
+      <UpdateWidget page={page} onUpdate={onUpdateMessageList} />
     </div>
   );
 };

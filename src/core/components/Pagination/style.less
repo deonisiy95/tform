@@ -18,8 +18,8 @@
 
     li {
       cursor: pointer;
-      min-width: 28px;
-      height: 28px;
+      min-width: 20px;
+      height: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -35,22 +35,29 @@
     }
 
     .button {
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      background: @grayscale-50;
+      border-radius: 10px;
+      width: 20px;
+      height: 20px;
+      background-color: @main-element;
       background-size: 12px;
-      &:hover {
-        background-color: @grayscale-60;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: darken(@main-element, 5%);
       }
 
-      &:active {
-        background-color: @grayscale-70;
+      :global .icon {
+        background-color: @main-element-text;
       }
 
       &.disabled {
         background-color: @grayscale-30;
-        cursor: default;
+        cursor: not-allowed;
+
+        :global .icon {
+          background-color: @grayscale-50;
+        }
       }
     }
 

@@ -1,18 +1,30 @@
-import React, {FC, useCallback} from 'react';
+import React, {FC, useCallback, useMemo} from 'react';
 import {PaginationPage} from './Page';
 import {PaginationRestPage} from './Rest';
 import {NavigateButton} from './NavigateButton';
-import usePagination, {TItem} from 'UI/Pagination/usePagination';
+import usePagination, {TItem, IPaginationParams} from 'UI/Pagination/usePagination';
 import style from './style.less';
+import cn from 'classnames';
 
 interface IProps {
   count: number;
   onChange: (page: number) => void;
   page?: number;
+  className?: string;
 }
 
-export const Pagination: FC<IProps> = ({count, onChange}) => {
-  const {items} = usePagination({count, onChange});
+export const Pagination: FC<IProps> = ({page, count, onChange, className}) => {
+  const params = useMemo(() => {
+    const result: IPaginationParams = {count, onChange};
+
+    if (page) {
+      result.page = page;
+    }
+
+    return result;
+  }, [count, page, onChange]);
+
+  const {items} = usePagination(params);
 
   const renderItem = useCallback((items: TItem[]) => {
     return items.map(item => {
@@ -54,7 +66,7 @@ export const Pagination: FC<IProps> = ({count, onChange}) => {
   }, []);
 
   return (
-    <div className={style.pagination}>
+    <div className={cn(style.pagination, className)}>
       <ul className={style.pages}>{renderItem(items)}</ul>
     </div>
   );

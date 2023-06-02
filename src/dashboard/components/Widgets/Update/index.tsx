@@ -6,10 +6,11 @@ import {useMounted} from 'src/core/hooks/useMounted';
 import moment from 'moment';
 
 interface IProps {
+  page: number;
   onUpdate?: () => void;
 }
 
-export const UpdateWidget: FC<IProps> = ({onUpdate}) => {
+export const UpdateWidget: FC<IProps> = ({page, onUpdate}) => {
   const lastUpdateTime = useRef<number>();
   const timer = useRef<TimeoutId>();
 
@@ -26,7 +27,6 @@ export const UpdateWidget: FC<IProps> = ({onUpdate}) => {
 
   const tick = () => {
     timer.current = setTimeout(() => {
-      console.log('tick');
       if (isMounted()) {
         updateText();
         tick();
@@ -41,7 +41,7 @@ export const UpdateWidget: FC<IProps> = ({onUpdate}) => {
     return () => {
       clearTimeout(timer.current);
     };
-  }, []);
+  }, [page]);
 
   const updateData = () => {
     onUpdate?.();

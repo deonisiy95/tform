@@ -37,7 +37,7 @@ export const TableMessagesComponent: FC<IProps> = ({
           {loading ? <Loader className={style.loader} /> : null}
           {messages.map(message => (
             <TableRow
-              key={message.createdAt}
+              key={message._id}
               message={getShortTextMessage(message)}
               widgetName={getWidgetName(message.widgetId)}
               createdAt={message.createdAt}

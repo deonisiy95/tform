@@ -9,5 +9,5 @@ interface IProps {
 }
 
 export default function Icon({type, className, onClick}: IProps) {
-  return <div className={cn(style.icon, style[type], className)} onClick={onClick} />;
+  return <div className={cn(style.icon, 'icon', style[type], className)} onClick={onClick} />;
 }

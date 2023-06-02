@@ -1,4 +1,5 @@
 type IMessage = {
+  _id: string;
   data: Array<{
     _id: string;
     key: string;

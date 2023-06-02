@@ -6,10 +6,14 @@ import {MessageDetails} from 'src/dashboard/components/MessageDetails';
 import {Pagination} from 'UI/Pagination';
 
 interface IProps {
+  page: number;
   messages: IMessage[];
+  onClickPage: (page: number) => void;
+  pagesCount?: number;
+  loading?: boolean;
 }
 
-export const TableMessages: FC<IProps> = ({messages}) => {
+export const TableMessages: FC<IProps> = ({page, messages, pagesCount, loading, onClickPage}) => {
   const getWidgetName = useWidgetName();
 
   const onClickMessage = useCallback((message: IMessage) => {
@@ -22,8 +26,9 @@ export const TableMessages: FC<IProps> = ({messages}) => {
         messages={messages}
         getWidgetName={getWidgetName}
         onClickMessage={onClickMessage}
+        loading={loading}
       />
-      <Pagination count={50} onChange={(page) => console.log('asd', page)} />
+      <Pagination page={page} count={pagesCount} onChange={onClickPage} />
     </>
   );
 };

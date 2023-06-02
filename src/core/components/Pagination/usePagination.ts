@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-interface IProps {
+export interface IPaginationParams {
   boundaryCount?: number;
   count?: number;
   defaultPage?: number;
@@ -22,7 +22,7 @@ export type TItem = {
   disabled: boolean;
 }
 
-export default function usePagination(props?: IProps) {
+export default function usePagination(props?: IPaginationParams) {
   const {
     boundaryCount = 1,
     count = 1,
@@ -38,7 +38,8 @@ export default function usePagination(props?: IProps) {
     ...other
   } = props ?? {};
 
-  const [page, setPageState] = useState(defaultPage);
+  const [pageState, setPageState] = useState(defaultPage);
+  const page = pageProp ? pageProp : pageState;
 
   const handleClick = value => {
     if (!pageProp) {

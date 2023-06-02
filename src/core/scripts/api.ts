@@ -16,6 +16,7 @@ export default class Api {
     return new Promise(async (resolve, reject) => {
       const headers: HeadersInit = {};
       let body: BodyInit = null;
+      let urlParams: URLSearchParams = null;
 
       if (method === 'POST') {
         headers['Content-Type'] = 'application/json;charset=utf-8';
@@ -26,10 +27,14 @@ export default class Api {
       }
 
       if (data) {
-        body = JSON.stringify(data);
+        if (method === 'GET') {
+          urlParams = new URLSearchParams(data as URLSearchParams);
+        } else {
+          body = JSON.stringify(data);
+        }
       }
 
-      const response = await fetch(`${host}/${url}`, {
+      const response = await fetch(`${host}/${url}${urlParams ? '?' + urlParams.toString() : ''}`, {
         method,
         headers,
         body
