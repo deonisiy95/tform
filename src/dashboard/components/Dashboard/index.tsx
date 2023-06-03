@@ -17,9 +17,9 @@ export default function Dashboard() {
   const {isLoading: isLoadingMessages, setLoading: setLoadingMessages} = useLongLoading(false, 500);
   const empty = isLoading || messages.length === 0;
 
-  useEffect(() => {
+  const messageRequest = useCallback((page: number) => {
     setLoadingMessages(true);
-    getMessages(page * LIMIT_MESSAGE_COUNT - LIMIT_MESSAGE_COUNT, LIMIT_MESSAGE_COUNT)
+    return getMessages(page * LIMIT_MESSAGE_COUNT - LIMIT_MESSAGE_COUNT, LIMIT_MESSAGE_COUNT)
       .then((result: IGetMessagesResponse) => {
         setMessages(result.messages ?? []);
         setTotal(result.total ?? 0);
@@ -28,6 +28,10 @@ export default function Dashboard() {
         setLoading(false);
         setLoadingMessages(false);
       });
+  }, []);
+
+  useEffect(() => {
+    messageRequest(page);
   }, [page]);
 
   const onClickPage = useCallback((page: number) => {
@@ -35,8 +39,12 @@ export default function Dashboard() {
   }, []);
 
   const onUpdateMessageList = useCallback(() => {
-    setPage(1);
-  }, []);
+    if (page === 1) {
+      messageRequest(page);
+    } else {
+      setPage(1);
+    }
+  }, [page]);
 
   return (
     <div className={style.dashboard}>

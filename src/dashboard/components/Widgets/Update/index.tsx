@@ -36,6 +36,8 @@ export const UpdateWidget: FC<IProps> = ({page, onUpdate}) => {
 
   useEffect(() => {
     lastUpdateTime.current = Date.now();
+    clearTimeout(timer.current);
+    updateText();
     tick();
 
     return () => {
