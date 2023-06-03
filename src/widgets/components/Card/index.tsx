@@ -8,11 +8,12 @@ import {useAgentsList} from 'src/widgets/hooks/useAgentsList';
 
 interface IProps {
   widget: IWidget;
-  onClick: () => void;
+  onSettings: () => void;
+  onSimulate: () => void;
   className?: string;
 }
 
-export default function Card({widget, onClick, className}: IProps) {
+export default function Card({widget, onSettings, onSimulate, className}: IProps) {
   const agentList = useAgentsList(widget.agents);
 
   return (
@@ -29,9 +30,14 @@ export default function Card({widget, onClick, className}: IProps) {
           <div className={style.rowText}>{l10n('widget.stat.notExist')}</div>
         </div>
       </div>
-      <Button onClick={onClick} size='sm' color='azure'>
-        {l10n('settings')}
-      </Button>
+      <div className={style.buttons}>
+        <Button onClick={onSimulate} size='sm' color='azure'>
+          {l10n('widget.simulate.button')}
+        </Button>
+        <Button onClick={onSettings} size='sm' color='azure'>
+          {l10n('settings')}
+        </Button>
+      </div>
     </div>
   );
 }

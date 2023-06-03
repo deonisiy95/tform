@@ -12,7 +12,7 @@ export const SettingsWidget = () => {
   const widget = useSelector(state => selectWidget(state, widget_id));
 
   return (
-    <Page title={`${l10n('settings')} ${widget?.name}`}>
+    <Page title={`${l10n('widget.settings.title')} ${widget?.name}`}>
       <SettingsWidgetComponent
         name={widget?.name}
         options={

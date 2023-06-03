@@ -9,10 +9,11 @@ interface IProps {
   widgets: Array<IWidget>;
   loading: boolean;
   onSettings: (id: string) => void;
+  onSimulate: (id: string) => void;
   onAdd: () => void;
 }
 
-export default function Widgets({widgets, loading, onSettings, onAdd}: IProps) {
+export default function Widgets({widgets, loading, onSettings, onSimulate, onAdd}: IProps) {
   return (
     <div>
       {!widgets || widgets.length === 0 ? (
@@ -41,7 +42,8 @@ export default function Widgets({widgets, loading, onSettings, onAdd}: IProps) {
                 className={style.widget}
                 key={item.widgetId}
                 widget={item}
-                onClick={() => onSettings(item.widgetId)}
+                onSettings={() => onSettings(item.widgetId)}
+                onSimulate={() => onSimulate(item.widgetId)}
               />
             ))}
           </div>

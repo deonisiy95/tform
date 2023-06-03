@@ -13,6 +13,23 @@ export default function WidgetsController() {
   const openSettings = useCallback((id: string) => {
     navigate(`/widgets/${id}`);
   }, []);
+  const openSimulatePage = useCallback(
+    (id: string) => {
+      const widget = widgets.find(item => item.widgetId === id);
+
+      if (!widget) {
+        console.log('Error open simulate page: don`t find widget');
+        return;
+      }
+
+      const params = new URLSearchParams({
+        name: widget.name
+      });
+
+      window.open('/simulate_page.html?' + params, '_blank');
+    },
+    [widgets]
+  );
 
   const openAdd = useCallback(() => {
     const popup = Modal(<AddWidget close={() => popup.close()} />, {noPadding: true});
@@ -20,7 +37,13 @@ export default function WidgetsController() {
 
   return (
     <Page title={l10n('widgets')}>
-      <Widgets widgets={widgets} loading={loading} onSettings={openSettings} onAdd={openAdd} />
+      <Widgets
+        widgets={widgets}
+        loading={loading}
+        onSettings={openSettings}
+        onAdd={openAdd}
+        onSimulate={openSimulatePage}
+      />
     </Page>
   );
 }

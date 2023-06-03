@@ -50,6 +50,8 @@
   "widget.agents.notExist": "Нет назначенных агентов",
   "widget.stat.notExist": "Нет данных по обращениям",
   "widget.settings.options": "Опции",
+  "widget.settings.title": "Настройки канала",
+  "widget.simulate.button": "Тестовая страница",
   "widget.settings.options.agents.text": "Операторы, которые принимают обращения в Telegram",
   "widget.settings.design": "Дизайн",
   "widget.settings.design.control.down": "Переместить вниз",
