@@ -3,6 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <title>Simulate page</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style type="text/css">
+      body {
+        font-family: -apple-system, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+          Noto Sans, sans-serif, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+          sans-serif;
+      }
+      h1 {
+        margin: 20px;
+        font-size: 32px;
+        color: #24292e;
+        font-weight: 600;
+        font-style: normal;
+        font-stretch: normal;
+        text-align: center;
+      }
+      p {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #444d56;
+        text-align: left;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        letter-spacing: 0;
+      }
+      .container {
+        width: 600px;
+        margin: 60px auto;
+      }
+
+      .image {
+          display: flex;
+          justify-content: center;
+      }
+
+      .code {
+          display: flex;
+          align-items: center;
+      }
+
+      #script_url {
+          margin: 10px 0 15px 0;
+          background-color: white;
+          border: solid 1px #dbdbdb;
+          border-radius: 5px;
+          -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+          padding: 10px 20px;
+          font-size: 13px;
+          line-height: 1.42857143;
+          color: #879293;
+      }
+    </style>
     <script>
       window.onload = function () {
         const params = new URLSearchParams(window.location.search);
@@ -13,6 +70,27 @@
     </script>
   </head>
   <body>
-    <div id="name"></div>
+    <div class="container">
+      <div class='image'>
+        <img style="width: 350px;" src="images/simulate_illustration.svg" />
+      </div>
+      <h1>Это тестовая страница</h1>
+      <p>Так будет выглядеть форма на сайте</p>
+      <p>Вы можете протестировать форму и пообщаться сами с собой</p>
+      <p>
+        Для того, чтобы принимать обращения клиентов с сайта, вам необходимо установить следующий
+        код на каждую страницу вашего сайта перед закрывающим тегом < head >:
+      </p>
+      <div id="name"></div>
+      <div class="code">
+        <div id="script_url">
+          &lt;script src="<span id="code_host"></span>widget/<span
+          id="widget_id"
+        ></span
+        >" async&gt;&lt;/script&gt;
+        </div>
+        <a href="" id="jivo_copy_code" target="_blank"></a>
+      </div>
+    </div>
   </body>
 </html>
