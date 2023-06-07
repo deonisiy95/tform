@@ -38,58 +38,128 @@
       }
 
       .image {
-          display: flex;
-          justify-content: center;
+        display: flex;
+        justify-content: center;
       }
 
       .code {
-          display: flex;
-          align-items: center;
+        display: flex;
+        align-items: center;
       }
 
       #script_url {
-          margin: 10px 0 15px 0;
-          background-color: white;
-          border: solid 1px #dbdbdb;
-          border-radius: 5px;
-          -webkit-background-clip: padding-box;
-          background-clip: padding-box;
-          padding: 10px 20px;
-          font-size: 13px;
-          line-height: 1.42857143;
-          color: #879293;
+        margin: 10px 0 15px 0;
+        background-color: white;
+        border: solid 1px #dbdbdb;
+        border-radius: 5px;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        padding: 10px 20px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #879293;
       }
     </style>
     <script>
       window.onload = function () {
         const params = new URLSearchParams(window.location.search);
-        const nameElement = document.getElementById('name');
+        const loaderHostElement = document.getElementById('loader_host');
+        const widgetIdElement = document.getElementById('widget_id');
+        const widgetNameElement = document.getElementById('widget_name');
+        const head = document.getElementsByTagName('head')[0];
+        const loaderHost = 'http://localhost:3000/loader.js';
+        const widget_id = params.get('widget_id');
+        const name = params.get('name');
+        const lang = params.get('lang') === 'ru' ? 'ru' : 'en';
 
-        nameElement.innerText = params.get('name');
+        if (loaderHostElement) {
+          loaderHostElement.innerText = loaderHost;
+        }
+        if (widgetIdElement) {
+          widgetIdElement.innerText = widget_id;
+        }
+        if (widgetNameElement && name) {
+          widgetNameElement.innerText = name;
+        }
+
+        let scriptNode;
+
+        if (widget_id && head) {
+          scriptNode = document.createElement('script');
+          scriptNode.type = 'text/javascript';
+          scriptNode.async = true;
+          scriptNode.src = loaderHost;
+          scriptNode.setAttribute('data-tf-id', widget_id);
+
+          head.appendChild(scriptNode);
+        }
+
+        const dictionaries = [
+          {
+            element: 'title',
+            text: {
+              ru: 'Это тестовая страница',
+              en: 'This is a test page'
+            }
+          },
+          {
+            element: 'text_1_1',
+            text: {
+              ru: 'Так будет выглядеть форма ',
+              en: 'This is what the form will look like '
+            }
+          },
+          {
+            element: 'text_1_2',
+            text: {
+              ru: ' на сайте',
+              en: ' on the site'
+            }
+          },
+          {
+            element: 'text_2',
+            text: {
+              ru: 'Вы можете протестировать форму и пообщаться сами с собой',
+              en: 'You can test the form and chat with yourself'
+            }
+          },
+          {
+            element: 'text_3',
+            text: {
+              ru:
+                'Для того, чтобы принимать обращения клиентов с сайта, вам необходимо установить следующий' +
+                ' код на каждую страницу вашего сайта перед закрывающим тегом < head >:',
+              en:
+                'In order to receive customer requests from the site, you need to install the following' +
+                ' code for each page of your site before the closing <head> tag:'
+            }
+          }
+        ];
+
+        dictionaries.map((item) => {
+          const element = document.getElementById(item.element);
+
+          if (element) {
+            element.innerText = item.text[lang];
+          }
+        })
       };
     </script>
   </head>
   <body>
     <div class="container">
-      <div class='image'>
+      <div class="image">
         <img style="width: 350px;" src="images/simulate_illustration.svg" />
       </div>
-      <h1>Это тестовая страница</h1>
-      <p>Так будет выглядеть форма на сайте</p>
-      <p>Вы можете протестировать форму и пообщаться сами с собой</p>
-      <p>
-        Для того, чтобы принимать обращения клиентов с сайта, вам необходимо установить следующий
-        код на каждую страницу вашего сайта перед закрывающим тегом < head >:
-      </p>
-      <div id="name"></div>
+      <h1 id="title"></h1>
+      <p><span id="text_1_1"></span><span id="widget_name"></span><span id="text_1_2"></span></p>
+      <p id="text_2"></p>
+      <p id="text_3"></p>
       <div class="code">
         <div id="script_url">
-          &lt;script src="<span id="code_host"></span>widget/<span
-          id="widget_id"
-        ></span
-        >" async&gt;&lt;/script&gt;
+          &lt;script src="<span id="loader_host"></span>" data-tf-id="<span id="widget_id"></span
+          >"&gt;&lt;/script&gt;
         </div>
-        <a href="" id="jivo_copy_code" target="_blank"></a>
       </div>
     </div>
   </body>

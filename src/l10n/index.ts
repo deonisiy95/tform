@@ -20,12 +20,16 @@ class Localization {
     moment.locale(locale);
   }
 
+  public getLocale(): string {
+    return this.locale;
+  }
+
   public translate(key: string): string {
     return this.dictionaries[this.locale][key];
   }
 }
 
-const localization = new Localization();
+export const localization = new Localization();
 
 globalThis.l10n = (key: string): string => {
   return localization.translate(key);
