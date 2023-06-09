@@ -33,7 +33,7 @@ function Basis() {
         <PrivateRoute path='/widgets' exact>
           <Widgets />
         </PrivateRoute>
-        <PrivateRoute path='/widgets/:id'>
+        <PrivateRoute path='/widgets/:id' exact>
           <SettingsWidget />
         </PrivateRoute>
       </ErrorBoundary>

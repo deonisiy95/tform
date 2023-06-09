@@ -7,6 +7,7 @@ import AddWidget from 'src/widgets/controllers/Add';
 import {navigate} from 'src/core/scripts/navigation';
 import {Page} from 'UI/Page';
 import {localization} from 'src/l10n';
+import config from 'src/config';
 
 export default function WidgetsController() {
   const widgets = useSelector(selectWidgets);
@@ -25,6 +26,7 @@ export default function WidgetsController() {
 
       const params = new URLSearchParams({
         name: widget.name,
+        widget_host: config.widget_host,
         widget_id: id,
         lang: localization.getLocale()
       });

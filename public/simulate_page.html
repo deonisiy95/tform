@@ -56,7 +56,7 @@
         background-clip: padding-box;
         padding: 10px 20px;
         font-size: 13px;
-        line-height: 1.42857143;
+        line-height: 1.4;
         color: #879293;
       }
     </style>
@@ -67,10 +67,11 @@
         const widgetIdElement = document.getElementById('widget_id');
         const widgetNameElement = document.getElementById('widget_name');
         const head = document.getElementsByTagName('head')[0];
-        const loaderHost = 'http://localhost:3000/loader.js';
         const widget_id = params.get('widget_id');
         const name = params.get('name');
+        const widget_host = params.get('widget_host');
         const lang = params.get('lang') === 'ru' ? 'ru' : 'en';
+        const loaderHost = `${widget_host}/loader.js`;
 
         if (loaderHostElement) {
           loaderHostElement.innerText = loaderHost;

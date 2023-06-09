@@ -3,6 +3,7 @@ import {SettingsWidgetComponent} from 'src/widgets/components/Settings';
 import {useSelector} from 'react-redux';
 import {selectWidget} from 'src/widgets/selectors';
 import {Options} from 'src/widgets/controllers/Options';
+import {InstallWidget} from 'src/widgets/controllers/Install';
 import {FormBuilderController} from 'src/form_builder/controllers';
 import {useParams} from 'react-router-dom';
 import {Page} from 'UI/Page';
@@ -24,6 +25,7 @@ export const SettingsWidget = () => {
           />
         }
         design={<FormBuilderController widgetId={widget?.widgetId} />}
+        install={<InstallWidget widgetId={widget?.widgetId} />}
       />
     </Page>
   );
