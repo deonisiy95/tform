@@ -15,7 +15,11 @@ const meta = {
 
 module.exports = {
   entry: './src/index.tsx',
-  output: {path: path.join(__dirname, 'build'), filename: 'index.bundle.js', publicPath: '/'},
+  output: {
+    path: path.join(__dirname, 'build'),
+    filename: 'build.[contenthash].js',
+    publicPath: '/'
+  },
   mode: process.env.NODE_ENV || 'development',
   devtool: isDevelopment() ? 'cheap-module-source-map' : false,
   resolve: {

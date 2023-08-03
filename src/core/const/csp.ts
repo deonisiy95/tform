@@ -1,9 +1,11 @@
 const getPolicy = () => {
   const connectSrc = `
+  'self' *.askio.ru
   localhost localhost:* ws://localhost:*
   `;
 
   const scriptSrc = `
+  'self' *.askio.ru
   'unsafe-eval' 'unsafe-inline' localhost:*
   `;
 

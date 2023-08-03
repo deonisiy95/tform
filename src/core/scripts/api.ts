@@ -34,22 +34,33 @@ export default class Api {
         }
       }
 
-      const response = await fetch(`${host}/${url}${urlParams ? '?' + urlParams.toString() : ''}`, {
-        method,
-        headers,
-        body
-      });
+      try {
+        const response = await fetch(
+          `${host}/${url}${urlParams ? '?' + urlParams.toString() : ''}`,
+          {
+            method,
+            headers,
+            body
+          }
+        );
 
-      const result = await response.json();
+        const result = await response.json();
 
-      if (response.ok) {
-        resolve(result);
-      } else {
-        console.error('Error request', response.status);
+        if (response.ok) {
+          resolve(result);
+        } else {
+          console.error('Error request', response.status);
+
+          reject({
+            code: response.status,
+            error: result?.message
+          });
+        }
+      } catch (error) {
+        console.error('Error request', error);
 
         reject({
-          code: response.status,
-          error: result?.message
+          error: 'uncaught_error'
         });
       }
     });

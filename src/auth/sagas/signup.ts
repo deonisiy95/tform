@@ -4,7 +4,8 @@ import {authApiActions} from 'src/auth/actions/api';
 import {navigate} from 'src/core/scripts/navigation';
 
 const SIGN_UP_ERRORS = {
-  user_exist: 'Email уже используется'
+  user_exist: 'Email уже используется',
+  uncaught_error: l10n('uncaught_error')
 };
 
 export function* signUp(action: ReturnType<typeof actions.signUp>) {
@@ -21,9 +22,13 @@ export function* signUp(action: ReturnType<typeof actions.signUp>) {
       })
     );
 
+    yield put(actions.setSingUpProcessing(false));
+
     yield call(navigate, '/');
   } catch (error) {
     console.error('Error signUp', error);
+
+    yield put(actions.setSingUpProcessing(false));
 
     const message = SIGN_UP_ERRORS[error?.error];
 
@@ -34,8 +39,5 @@ export function* signUp(action: ReturnType<typeof actions.signUp>) {
 
       yield put(actions.setSingUpError(null));
     }
-
-  } finally {
-    yield put(actions.setSingUpProcessing(false));
   }
 }

@@ -1,4 +1,4 @@
 export default {
-  host: 'http://localhost:3000',
-  widget_host: 'http://localhost:3000'
+  host: 'http://api.askio.ru',
+  widget_host: 'http://api.askio.ru'
 };

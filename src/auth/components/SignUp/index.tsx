@@ -6,6 +6,7 @@ import Link from 'src/core/components/Link';
 import Button from 'src/core/components/Button';
 import Input from 'src/core/components/Input';
 import cn from 'classnames';
+import {Validation} from 'src/core/utils/validation';
 
 interface IProps {
   error?: string;
@@ -22,29 +23,21 @@ export default function SignUpComponent({onClick, toLogin, error, processing}: I
   const [invalidEmail, setInvalidEmail] = useState(false);
   const [invalidPass, setInvalidPass] = useState(false);
 
-  const checkFields = (): boolean => {
-    let result = true;
+  const isValidFields = (): boolean => {
+    const nameError = Validation.isEmpty(inputName.current.value);
+    const emailError =
+      Validation.isEmpty(inputEmail.current.value) || !Validation.isEmail(inputEmail.current.value);
+    const passwordError = Validation.isEmpty(inputPassword.current.value);
 
-    if (!inputName.current.value?.trim()) {
-      setInvalidName(true);
-      result = false;
-    }
+    setInvalidName(nameError);
+    setInvalidEmail(emailError);
+    setInvalidPass(passwordError);
 
-    if (!inputEmail.current.value?.trim()) {
-      setInvalidEmail(true);
-      result = false;
-    }
-
-    if (!inputPassword.current.value?.trim()) {
-      setInvalidPass(true);
-      result = false;
-    }
-
-    return result;
+    return !nameError && !emailError && !passwordError;
   };
 
   const signUp = () => {
-    if (!checkFields()) {
+    if (!isValidFields()) {
       return;
     }
 
@@ -61,21 +54,9 @@ export default function SignUpComponent({onClick, toLogin, error, processing}: I
         <div className={componentStyle.image} />
         <h3>Регистрация</h3>
         <div className={style.form}>
-          <Input
-            placeholder={'Имя'}
-            ref={inputName}
-            invalid={invalidName}
-          />
-          <Input
-            placeholder={'Email'}
-            ref={inputEmail}
-            invalid={invalidEmail}
-          />
-          <Input
-            placeholder={'Пароль'}
-            ref={inputPassword}
-            invalid={invalidPass}
-          />
+          <Input placeholder={'Имя'} ref={inputName} invalid={invalidName} />
+          <Input placeholder={'Email'} ref={inputEmail} invalid={invalidEmail} />
+          <Input placeholder={'Пароль'} ref={inputPassword} invalid={invalidPass} />
         </div>
         {<span className={cn(style.errorContainer, {[style.error]: error})}>{error}</span>}
         <Button className={style.button} onClick={signUp} isLoad={processing}>
