@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-cli serve --mode=development --env development --open --hot",
-    "build": "NODE_ENV=production webpack"
+    "copyStatic": "rsync -av --progress ./public/ ./build/ --exclude index.html",
+    "build": "NODE_ENV=production webpack && npm run copyStatic"
   },
   "dependencies": {
     "classnames": "2.3.1",

@@ -14,7 +14,7 @@ class TokenService {
   private token: IToken = null;
 
   public getToken = async (): Promise<string> => {
-    if (this.isExpired()) {
+    if (this.isExpired(this.token?.accessToken)) {
       const newToken = await this.updateToken();
       this.setToken(newToken);
     }
@@ -40,8 +40,7 @@ class TokenService {
     return token;
   };
 
-  private isExpired = () => {
-    const token = this.token?.accessToken;
+  public isExpired = (token: string) => {
     const expirationDate = this.getExpirationDate(token);
 
     if (!token || !expirationDate) {

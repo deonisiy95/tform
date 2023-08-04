@@ -5,8 +5,9 @@ import Api from 'src/core/scripts/api';
 import {navigate} from 'src/core/scripts/navigation';
 import {localStorage} from 'src/core/scripts/localStorage';
 import TokenService from 'src/auth/services/token';
+import {IToken} from 'src/auth/@types';
+import {TIME_SPLASH_SCREEN} from 'src/auth/const';
 
-const TIME_SPLASH_SCREEN = 2000;
 const LOGIN_ERRORS = {
   invalid_credentials: 'Неправильный email или пароль'
 };
@@ -33,6 +34,10 @@ export function* login(action: ReturnType<typeof actions.login>) {
 
     yield call(navigate, '/');
 
+    yield put(actions.setLoading(true));
+    yield delay(TIME_SPLASH_SCREEN);
+    yield put(actions.setLoading(false));
+
     yield put(appActions.startApp());
   } catch (error) {
     yield delay(500);
@@ -54,12 +59,22 @@ export function* login(action: ReturnType<typeof actions.login>) {
 }
 
 export function* checkLogin() {
-  const token = yield call(localStorage.getItem, 'token');
+  const token: IToken = yield call(localStorage.getItem, 'token');
 
-  if (token) {
-    yield call(TokenService.setToken, token);
-    yield call(TokenService.getToken);
+  if (!token) {
+    yield call(navigate, '/login');
+    return;
   }
+
+  const isExpiredToken = yield call(TokenService.isExpired, token.refreshToken);
+
+  if (isExpiredToken) {
+    yield call(navigate, '/login');
+    return;
+  }
+
+  yield call(TokenService.setToken, token);
+  yield call(TokenService.getToken);
 
   yield delay(TIME_SPLASH_SCREEN);
   yield call(navigate, '/');

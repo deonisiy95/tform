@@ -62,7 +62,7 @@ export default function SignUpComponent({onClick, toLogin, error, processing}: I
         <Button className={style.button} onClick={signUp} isLoad={processing}>
           Зарегистрироваться
         </Button>
-        <div>
+        <div className={style.signupLink}>
           <span className={style.signupText}>Уже есть аккаунт?</span>
           <Link onClick={toLogin} size={'md'}>
             Войти

@@ -15,7 +15,7 @@ interface IProps {
 
 export default function Widgets({widgets, loading, onSettings, onSimulate, onAdd}: IProps) {
   return (
-    <div>
+    <>
       {!widgets || widgets.length === 0 ? (
         <EmptyBox
           page='widgets'
@@ -49,6 +49,6 @@ export default function Widgets({widgets, loading, onSettings, onSimulate, onAdd
           </div>
         </>
       )}
-    </div>
+    </>
   );
 }

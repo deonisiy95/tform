@@ -2,6 +2,8 @@ import {call, put, delay} from 'redux-saga/effects';
 import actions from 'src/auth/actions';
 import {authApiActions} from 'src/auth/actions/api';
 import {navigate} from 'src/core/scripts/navigation';
+import TokenService from 'src/auth/services/token';
+import {TIME_SPLASH_SCREEN} from 'src/auth/const';
 
 const SIGN_UP_ERRORS = {
   user_exist: 'Email уже используется',
@@ -15,16 +17,16 @@ export function* signUp(action: ReturnType<typeof actions.signUp>) {
 
     const result = yield call(authApiActions.signUp, action.payload);
 
-    yield put(
-      actions.setToken({
-        accessToken: result.tokens?.accessToken,
-        refreshToken: result.tokens?.refreshToken
-      })
-    );
+    yield call(TokenService.setToken, result.tokens);
 
     yield put(actions.setSingUpProcessing(false));
 
     yield call(navigate, '/');
+
+    yield put(actions.setLoading(true));
+    yield delay(TIME_SPLASH_SCREEN);
+    yield put(actions.setLoading(false));
+
   } catch (error) {
     console.error('Error signUp', error);
 
