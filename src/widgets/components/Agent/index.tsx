@@ -4,15 +4,16 @@ import Checkbox from 'UI/Checkbox';
 import {Avatar} from 'UI/Avatar';
 
 interface IProps {
+  id: number;
   name;
   onSelect: () => void;
 }
 
-export const Agent: FC<IProps> = ({name, onSelect}) => {
+export const Agent: FC<IProps> = ({name, onSelect, id}) => {
   return (
     <Checkbox className={style.wrapper} onChange={onSelect}>
       <div className={style.agent}>
-        <Avatar id={123} name={name} />
+        <Avatar id={id} name={name} />
         <div className={style.name}>{name}</div>
       </div>
     </Checkbox>

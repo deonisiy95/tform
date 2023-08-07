@@ -6,6 +6,7 @@ import useLongLoading from 'src/core/hooks/useLongLoading';
 import {DashboardHeader} from 'src/dashboard/components/Header';
 import {Widgets} from 'src/dashboard/components/Widgets';
 import {getMessages} from 'src/dashboard/actions/Messages';
+import {navigate} from 'src/core/scripts/navigation';
 
 const LIMIT_MESSAGE_COUNT = 10;
 
@@ -53,7 +54,7 @@ export default function Dashboard() {
           page='dashboard'
           text={l10n('dashboard.empty')}
           buttonText={l10n('widgets.add')}
-          buttonHandler={() => {}}
+          buttonHandler={() => navigate('/widgets')}
           loading={isLoading}
         />
       ) : (

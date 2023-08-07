@@ -16,6 +16,6 @@ export const widgetsApiActions = {
     return Api.send('widgets', 'POST', data);
   },
   update: (data: Partial<IWidget>): Promise<IWidget> => {
-    return Api.send(`widgets/${data.widgetId}`, 'POST', data);
+    return Api.send(`widgets/${data.widgetId}`, 'PATCH', data);
   },
 };

@@ -182,6 +182,7 @@ export default function AddWidget({close}: IProps) {
             ? values.agents.map(agent => (
               <Agent
                 key={agent.id}
+                id={agent.id}
                 name={agent.name ?? agent.username}
                 onSelect={() => onChangeAgents(agent.id)}
               />
