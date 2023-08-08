@@ -18,18 +18,18 @@ export default function Menu({onItemClick, activeTab}: IProps) {
       <div className={style.main}>
         <MenuItem
           isActive={activeTab === 'dashboard'}
-          title='Dashboard'
+          title={l10n('sidebar.messages')}
           icon='conversation'
           onClick={onClick('dashboard')}
         />
         <MenuItem
           isActive={activeTab === 'widgets'}
-          title='Widget'
+          title={l10n('sidebar.widgets')}
           icon='dashboard-bold'
           onClick={onClick('widgets')}
         />
       </div>
-      <MenuItem title='Logout' icon='out' onClick={onClick('logout')} />
+      <MenuItem title={l10n('sidebar.exit')} icon='out' onClick={onClick('logout')} />
     </div>
   );
 }

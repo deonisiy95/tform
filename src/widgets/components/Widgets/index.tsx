@@ -39,7 +39,6 @@ export default function Widgets({widgets, loading, onSettings, onSimulate, onAdd
           <div className={style.list}>
             {widgets.map(item => (
               <Card
-                className={style.widget}
                 key={item.widgetId}
                 widget={item}
                 onSettings={() => onSettings(item.widgetId)}
