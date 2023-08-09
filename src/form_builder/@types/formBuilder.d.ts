@@ -50,7 +50,14 @@ export interface ICheckBoxControl {
   };
 }
 
+export type TLabelForm = {
+  text: string;
+  color: string;
+  icon: string;
+}
+
 export interface IFormData {
   widgetId: string;
   config: string;
+  label: TLabelForm;
 }
