@@ -31,11 +31,11 @@ export default function Card({widget, onSettings, onSimulate, className}: IProps
         </div>
       </div>
       <div className={style.buttons}>
-        <Button onClick={onSimulate} size='sm' color='azure'>
-          {l10n('widget.simulate.button')}
-        </Button>
         <Button onClick={onSettings} size='sm' color='azure'>
           {l10n('settings')}
+        </Button>
+        <Button onClick={onSimulate} size='sm' color='azure'>
+          {l10n('widget.simulate.button')}
         </Button>
       </div>
     </div>

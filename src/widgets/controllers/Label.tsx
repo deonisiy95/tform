@@ -20,5 +20,5 @@ export const LabelWidget: FC<IProps> = ({widgetId, labelData}) => {
     [widgetId]
   );
 
-  return <LabelWidgetComponent label={labelData} onSave={onSaveFormLabel} />;
+  return <LabelWidgetComponent labelData={labelData} onSave={onSaveFormLabel} />;
 };

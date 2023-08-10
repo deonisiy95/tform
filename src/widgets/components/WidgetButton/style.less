@@ -1,0 +1,40 @@
+@import '~styles/colors';
+
+:local {
+  .button {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: @main-element;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    box-shadow: @grayscale-20 0 4px 16px;
+
+    &:hover {
+      .text {
+        display: block;
+      }
+    }
+  }
+
+  .text {
+    display: none;
+    position: absolute;
+    right: calc(100% + 8px);
+    white-space: nowrap;
+  }
+
+  .icon {
+    height: 26px;
+    width: 26px;
+    -webkit-mask-size: contain;
+  }
+
+  .green {
+    background-color: #BCD39C;
+  }
+}
