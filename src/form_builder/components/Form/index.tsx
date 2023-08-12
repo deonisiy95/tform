@@ -7,6 +7,7 @@ import {TitleControl} from 'src/form_builder/components/Form/Controls/Title';
 import {InputControl} from 'src/form_builder/components/Form/Controls/Input';
 import {CheckBoxControl} from 'src/form_builder/components/Form/Controls/Checkbox';
 import {SelectControl} from 'src/form_builder/components/Form/Controls/Select';
+import Button from 'UI/Button';
 
 interface IProps {
   form: TForm;
@@ -43,6 +44,9 @@ export const Form: FC<IProps> = ({form, active, setActive}) => {
           {getFieldControl(field)}
         </FormItem>
       ))}
+      <Button className={style.submit} size={'sm'}>
+        Отправить
+      </Button>
     </div>
   );
 };

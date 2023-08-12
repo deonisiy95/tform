@@ -3,7 +3,7 @@ import style from './style.less';
 import cn from 'classnames';
 
 interface Props {
-  onClick: Function;
+  onClick?: Function;
   size?: 'xsm' | 'sm' | 'md' | 'lg';
   color?: 'primary' | 'light' | 'azure';
   className?: string;
@@ -28,7 +28,7 @@ export default function Button(props: PropsWithChildren<Props>) {
           }
         )}
         disabled={props.disabled || props.isLoad}
-        onClick={() => props.onClick()}
+        onClick={() => props.onClick?.()}
       >
         <div
           className={cn(style.text, {
