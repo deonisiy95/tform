@@ -14,7 +14,10 @@ export const TableRow: FC<IProps> = ({message, createdAt, widgetName, onClick}) 
 
   return (
     <div className={style.row} onClick={onClick}>
-      <div className={style.date}>{date.format('DD MMMM YYYY HH:mm')}</div>
+      <div className={style.date}>
+        <span>{date.format('DD MMMM YYYY ')}</span>
+        <span className={style.time}>{date.format('HH:mm')}</span>
+      </div>
       <div className={style.info}>{message}</div>
       <div className={style.widget}>{widgetName}</div>
     </div>
