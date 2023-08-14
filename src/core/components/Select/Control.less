@@ -1,0 +1,43 @@
+@import '~styles/colors';
+@import '~styles/mixins';
+
+:local {
+  .selectControl {
+    display: flex;
+    cursor: pointer;
+    border: 1px solid @grayscale-40;
+    border-radius: 8px;
+    padding: 11px;
+    position: relative;
+    font-size: 14px;
+    line-height: 16px;
+
+    .icon {
+      background-color: @grayscale-60;
+      flex-shrink: 0;
+      width: 12px;
+      height: 12px;
+      align-self: center;
+    }
+
+    .label {
+      flex-grow: 1;
+
+      .text-overflow-ellipsis();
+    }
+
+    &.open {
+      border-color: @grayscale-70;
+    }
+
+    &.disabled {
+      background-color: @grayscale-20;
+      border-color: @grayscale-40;
+      color: @grayscale-40;
+    }
+
+    &.error {
+      border-color: @red-40;
+    }
+  }
+}

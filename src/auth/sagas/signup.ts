@@ -6,8 +6,8 @@ import TokenService from 'src/auth/services/token';
 import {TIME_SPLASH_SCREEN} from 'src/auth/const';
 
 const SIGN_UP_ERRORS = {
-  user_exist: 'Email уже используется',
-  uncaught_error: l10n('uncaught_error')
+  user_exist: l10n('error.user_exist'),
+  uncaught_error: l10n('error.uncaught')
 };
 
 export function* signUp(action: ReturnType<typeof actions.signUp>) {
@@ -26,7 +26,6 @@ export function* signUp(action: ReturnType<typeof actions.signUp>) {
     yield put(actions.setLoading(true));
     yield delay(TIME_SPLASH_SCREEN);
     yield put(actions.setLoading(false));
-
   } catch (error) {
     console.error('Error signUp', error);
 

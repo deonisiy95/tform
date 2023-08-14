@@ -7,6 +7,8 @@ interface IProps {
 
 export class ErrorBoundaryScreen extends React.Component<IProps> {
   public render() {
+
+
     if (!this.props.hasError) {
       return this.props.children;
     }

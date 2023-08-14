@@ -1,0 +1,30 @@
+@import '~styles/colors';
+
+:local {
+  .dropdownContainer {
+    position: relative;
+  }
+
+  .caption {
+    cursor: pointer;
+  }
+
+  .dropdown {
+    box-shadow: 0 1px 16px 2px rgb(0 0 0 / 12%);
+    min-width: 150px;
+    border-radius: 8px;
+    position: absolute;
+    top: calc(100% + 4px);
+    z-index: 1;
+    background-color: @grayscale-0;
+
+    &.top {
+      top: unset;
+      bottom: 100%;
+    }
+
+    &.fullWidth {
+      width: 100%;
+    }
+  }
+}

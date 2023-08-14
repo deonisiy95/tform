@@ -1,5 +1,6 @@
 import 'moment/locale/ru';
 import moment from 'moment';
+import {localStorage} from 'src/core/scripts/localStorage';
 
 class Localization {
   private readonly dictionaries;
@@ -13,11 +14,17 @@ class Localization {
 
     this.locale = 'ru';
     moment.locale('ru');
+
+    localStorage.getItem('locale').then(locale => {
+      this.locale = locale ?? 'ru';
+      moment.locale(locale ?? 'ru');
+    });
   }
 
-  public setLocale(locale: string): void {
+  public async setLocale(locale: string): Promise<void> {
     this.locale = locale;
     moment.locale(locale);
+    await localStorage.setItem('locale', locale);
   }
 
   public getLocale(): string {

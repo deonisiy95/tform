@@ -13,6 +13,12 @@
     border-radius: 10px;
     background-color: @grayscale-0;
     box-shadow: rgba(149, 157, 165, 8%) 0 8px 24px;
+
+    .dropdownContent {
+      right: -12px;
+      top: 48px;
+      padding: 12px 24px 24px;
+    }
   }
 
   .name {
@@ -22,7 +28,7 @@
   .avatar {
     flex-shrink: 0;
     position: relative;
-    margin-left: 8px;
+    margin-right: 8px;
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -37,6 +43,18 @@
       background-repeat: no-repeat;
       background-size: 26px;
       background-position: center;
+    }
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      width: 12px;
+      height: 12px;
+      margin-left: 12px;
+      flex-shrink: 0;
     }
   }
 }
