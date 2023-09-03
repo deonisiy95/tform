@@ -81,5 +81,8 @@
   "dashboard.title": "Полученные сообщения",
   "dashboard.total": "Всего сообщений",
   "dashboard.update.text": "Данные обновлены",
-  "dashboard.update.button": "Обновить"
+  "dashboard.update.button": "Обновить",
+  "warning.mobileVersion.title": "Мобильная версия приложения в разработке",
+  "warning.mobileVersion.text": "Используйте пока дестопную версию",
+  "warning.mobileVersion.button": "Перейти на дестопную версию"
 }
