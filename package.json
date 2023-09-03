@@ -4,7 +4,7 @@
   "main": "index.js",
   "repository": "https://github.com/deonisiy95/tform.git",
   "author": "denis <deonisiy9572@gmail.com>",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "scripts": {
     "dev": "webpack-cli serve --mode=development --env development --open --hot",
     "copyStatic": "rsync -av --progress ./public/ ./build/ --exclude index.html",
