@@ -2,7 +2,9 @@
 
 [Askio.ru](http://askio.ru/)
 
-Frontend part of the [service](https://github.com/deonisiy95/service) for sending forms from the website to the telegram messenger
+Frontend part of the [service](http://askio.ru/) for sending forms from the website to the telegram messenger
+
+[Server side app](https://github.com/deonisiy95/service)
 
 ![Demo_1](https://github.com/deonisiy95/tform/blob/main/demo/demo1.webp?raw=true)
 
